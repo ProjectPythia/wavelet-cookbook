@@ -1,12 +1,12 @@
 <img src="thumbnail.png" alt="thumbnail" width="300"/>
 
-# (Replace_with_your_title) Cookbook
+# Wavelet Cookbook
 
 [![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers working with wavelets in Python
 
 ## Motivation
 
@@ -14,7 +14,7 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
 
 ## Authors
 
-[First Author](@first-author), [Second Author](@second-author), etc. _Acknowledge primary content authors here_
+[Cora Schneck](https://github.com/cyschneck)
 
 ### Contributors
 
@@ -26,11 +26,11 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
 
 (State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
 
-### Section 1 ( Replace with the title of this section, e.g. "Foundations" )
+### Foundations
 
 (Add content for this section, e.g., "The foundational content includes ... ")
 
-### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
+### Example Workflows
 
 (Add content for this section, e.g., "Example workflows include ... ")
 
@@ -74,7 +74,7 @@ If you are interested in running this material locally on your computer, you wil
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
-   conda activate cookbook-example
+   conda activate cookbook-dev
    ```
 1. Move into the `notebooks` directory and start up Jupyterlab
    ```bash
