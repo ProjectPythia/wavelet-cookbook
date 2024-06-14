@@ -18,8 +18,8 @@ This Project Pythia Cookbook covers working with wavelets in Python
 
 ### Contributors
 
-<a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythia/cookbook-template" />
+<a href="https://github.com/ProjectPythia/wavelet-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/wavelet-cookbook" />
 </a>
 
 ## Structure
