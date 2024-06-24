@@ -6,6 +6,7 @@ dependencies:
   - jupyterlab
   - sphinx-pythia-theme
   - numpy
+  - nodejs
   - matplotlib
   - pandas
   - scipy
