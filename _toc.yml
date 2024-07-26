@@ -10,5 +10,5 @@ parts:
   - caption: Example Workflows
     chapters:
       - file: notebooks/example-workflows/jingle-bells
-      - file: notebooks/example-workflows/spy-sounds
+      - file: notebooks/example-workflows/spy-keypad
       - file: notebooks/example-workflows/nino3
