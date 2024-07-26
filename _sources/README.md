@@ -9,8 +9,7 @@
 This Project Pythia Cookbook covers working with wavelets in Python
 
 ## Motivation
-
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
+Wavelets are a tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time vs. frequency limitations of Fourier Transforms
 
 ## Authors
 
@@ -28,11 +27,13 @@ This Project Pythia Cookbook covers working with wavelets in Python
 
 ### Foundations
 
-(Add content for this section, e.g., "The foundational content includes ... ")
+- Wavelet Basics
 
 ### Example Workflows
 
-(Add content for this section, e.g., "Example workflows include ... ")
+- PyWavelets and Jingle Bells
+- Spy Keypad
+- Atmospheric Data: nino3
 
 ## Running the Notebooks
 
