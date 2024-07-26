@@ -4,8 +4,10 @@ channels:
 dependencies:
   - jupyter-book
   - jupyterlab
+  - geocat-datafiles
   - sphinx-pythia-theme
   - numpy
+  - xarray
   - nodejs
   - matplotlib
   - pandas
