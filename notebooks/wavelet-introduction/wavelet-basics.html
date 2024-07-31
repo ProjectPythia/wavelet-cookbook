@@ -79,7 +79,7 @@
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 July 2024"/>
+    <meta name="docbuild:last-update" content="31 July 2024"/>
   </head>
   
   
@@ -477,8 +477,8 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id1">
-<h2>Background<a class="headerlink" href="#id1" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="load-wav-file-for-audio">
+<h2>Load Wav File for Audio<a class="headerlink" href="#load-wav-file-for-audio" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="load-wav-file-data">
 <h3>Load .wav file data<a class="headerlink" href="#load-wav-file-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
@@ -676,8 +676,8 @@ length of audio file = 156991 time steps
 </div>
 </div>
 </section>
-<section id="important-note-only-plot-positive-frequencies-hz-in-range-of-notes-200-500">
-<h3>Important note: Only plot positive Frequencies (hz) in range of notes (200-500)<a class="headerlink" href="#important-note-only-plot-positive-frequencies-hz-in-range-of-notes-200-500" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="only-plot-positive-frequencies-hz-in-range-of-notes-200-500">
+<h3>Only plot positive Frequencies (hz) in range of notes (200-500)<a class="headerlink" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -756,7 +756,12 @@ length of audio file = 156991 time steps
 <h2>Wavelet Transform - Frequency and Time<a class="headerlink" href="#wavelet-transform-frequency-and-time" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="what-is-a-wavelet">
 <h3>What is a Wavelet<a class="headerlink" href="#what-is-a-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>TODO</p>
+<p>A wavelet is a short wave-like oscillation that averages out to zero.</p>
+<blockquote>
+<div><p>Many signals and images of interest exhibit piecewise smooth behavior punctuated by transients. Speech signals are characterized by short bursts encoding consonants followed by steady-state oscillations indicative of vowels. Natural images have edges. Financial time series exhibit transient behavior, which characterize rapid upturns and downturns in economic conditions. Unlike the Fourier basis, wavelet bases are adept at sparsely representing piecewise regular signals and images, which include transient behavior.</p>
+<p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html">Mathworks</a>: “What is a Wavelet”</p>
+</div></blockquote>
+<p>Fourier transforms is made up of sine waves of different and various frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about when each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. A wavelet scales (expanded or shrunk) different shaped wavelets and is shifted along the signal. The scaled wavelet is shifted along the signal, which allows for a signal’s frequency at each time step to be determined.</p>
 </section>
 </section>
 <section id="wavelet-terminology">
@@ -774,7 +779,7 @@ length of audio file = 156991 time steps
 </ul>
 <section id="time-series-data">
 <h3>Time-Series Data<a class="headerlink" href="#time-series-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>TODO</p>
+<p>Time-series data is data recorded over known intervals of time. For example, time-series data for weather might track temperature every hour or every month.</p>
 </section>
 <section id="mother-wavelet">
 <h3>Mother Wavelet<a class="headerlink" href="#mother-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -859,6 +864,7 @@ length of audio file = 156991 time steps
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.mathworks.com/discovery/wavelet-transforms.html">MathWorks Wavelet Transforms</a></p></li>
+<li><p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html">MathWorks: “What is a Wavelet”</a></p></li>
 </ul>
 </section>
 </section>
@@ -932,7 +938,7 @@ length of audio file = 156991 time steps
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-for-audio">Load Wav File for Audio</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-data">Load .wav file data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-wav-file-to-pandas-dataframe">Convert .wav file to pandas dataframe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-small-sample-of-the-wav-file">Plot a Small Sample of the .wav File</a></li>
@@ -942,7 +948,7 @@ length of audio file = 156991 time steps
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-and-disadvantages-of-fourier-transform">Advantages (and Disadvantages) of Fourier Transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-of-signal-data">Fast Fourier Transform of Signal Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-frequency-prevalence-from-fast-fourier-transform">Plot Frequency Prevalence from Fast Fourier Transform</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-note-only-plot-positive-frequencies-hz-in-range-of-notes-200-500">Important note: Only plot positive Frequencies (hz) in range of notes (200-500)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500">Only plot positive Frequencies (hz) in range of notes (200-500)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes">Plot Fast Fourier Transform for Frequency Prevalence with Frequency of Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-predicts-four-notes">Fast Fourier Transform Predicts Four Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-what">Now What?</a></li>
@@ -1209,7 +1215,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 26 July 2024.
+  Last updated on 31 July 2024.
   <br/>
 </p>
   </div>
@@ -1263,7 +1269,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 26 July 2024.
+          Last updated on 31 July 2024.
         </p>
       </div>
     </div>

@@ -78,7 +78,7 @@
     <link rel="prev" title="Spy Keypad" href="spy-keypad.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 July 2024"/>
+    <meta name="docbuild:last-update" content="31 July 2024"/>
   </head>
   
   
@@ -492,18 +492,23 @@
 </div>
 <section id="download-and-organize-nino-3-sst-data">
 <h3>Download and Organize Nino 3 SST Data<a class="headerlink" href="#download-and-organize-nino-3-sst-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<section id="download-nino-3-data-and-skip-the-header-information">
-<h4>Download Nino 3 data and skip the header information<a class="headerlink" href="#download-nino-3-data-and-skip-the-header-information" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<section id="download-nino-3-data-from-geocat-datafiles">
+<h4>Download Nino 3 data from geocat-datafiles<a class="headerlink" href="#download-nino-3-data-from-geocat-datafiles" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nino_url</span> <span class="o">=</span> <span class="s1">&#39;https://paos.colorado.edu/research/wavelets/wave_idl/nino3sst.txt&#39;</span>
-<span class="n">nino3_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">nino_url</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">19</span><span class="p">)</span>
-<span class="c1">#nino3_data = xr.open_dataset(gcd.get(&#39;ascii_files/sst_nino3.dat&#39;))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download nino3 data</span>
+<span class="kn">import</span> <span class="nn">geocat.datafiles</span> <span class="k">as</span> <span class="nn">gcd</span>
+
+<span class="n">nino3_data</span> <span class="o">=</span> <span class="n">gcd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ascii_files/sst_nino3.dat&#39;</span><span class="p">)</span>
+<span class="n">nino3_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading file &#39;ascii_files/sst_nino3.dat&#39; from &#39;https://github.com/NCAR/GeoCAT-datafiles/raw/main/ascii_files/sst_nino3.dat&#39; to &#39;/home/runner/.cache/geocat&#39;.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.15 -0.3  -0.14 -0.41 -0.46 -0.66 -0.5  -0.8  -0.95 -0.72 -0.31 -0.71
  -1.04 -0.77 -0.86 -0.84 -0.41 -0.49 -0.48 -0.72 -1.21 -0.8   0.16  0.46
   0.4   1.    2.17  2.5   2.34  0.8   0.14 -0.06 -0.34 -0.71 -0.34 -0.73
@@ -811,7 +816,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-organize-nino-3-sst-data">Download and Organize Nino 3 SST Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-nino-3-data-and-skip-the-header-information">Download Nino 3 data and skip the header information</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-nino-3-data-from-geocat-datafiles">Download Nino 3 data from geocat-datafiles</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-and-view-data">Plot and View Data</a></li>
 </ul>
 </li>
@@ -1071,7 +1076,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 26 July 2024.
+  Last updated on 31 July 2024.
   <br/>
 </p>
   </div>
@@ -1125,7 +1130,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 26 July 2024.
+          Last updated on 31 July 2024.
         </p>
       </div>
     </div>
