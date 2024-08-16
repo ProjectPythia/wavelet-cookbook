@@ -23,17 +23,22 @@ Wavelets are a tool to analysis time-series data. When data frequencies vary ove
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook is broken into two main sections:
+
+- Foundations
+- Example Workflow
 
 ### Foundations
 
-- Wavelet Basics
+"Wavelet Basics" covers the motivation and background for wavelet analysis by review time-series data and Fourier transform
 
 ### Example Workflows
 
-- PyWavelets and Jingle Bells
-- Spy Keypad
-- Atmospheric Data: nino3
+"PyWavelets and Jingle Bells" covers `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
+
+"Spy Keypad" covers the order of notes in an unkonwn piece of audio data
+
+"Atmospheric Data: nino3" replicate the wavelet scalogram from the original 1999 Torrence and Compo paper in Python
 
 ## Running the Notebooks
 
