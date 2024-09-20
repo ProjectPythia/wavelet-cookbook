@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -78,7 +78,7 @@
     <link rel="prev" title="Spy Keypad" href="spy-keypad.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="2 August 2024"/>
+    <meta name="docbuild:last-update" content="20 September 2024"/>
   </head>
   
   
@@ -412,7 +412,7 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Generating a wavelet power and phase spectrum from the  time-series data <a class="reference external" href="https://psl.noaa.gov/gcos_wgsp/Timeseries/Nino3/">Nino 3 SST Index</a></p>
+<p>Generating a wavelet power and phase spectrum from the time-series data <a class="reference external" href="https://psl.noaa.gov/gcos_wgsp/Timeseries/Nino3/">Nino 3 SST Index</a></p>
 <ol class="arabic simple">
 <li><p>Prerequisties</p></li>
 <li><p>Background</p></li>
@@ -433,30 +433,27 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://projectpythia.org/wavelet-cookbook/notebooks/wavelet-introduction/wavelet-basics.html">Wavelet Basics</a></p></td>
-<td><p>Necessary</p></td>
-<td><p>Wavelet Terminology</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Intro to Matplotlib</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Intro to Matplotlib</a></p></td>
 <td><p>Necessary</p></td>
 <td><p>Plotting on a data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/pandas/pandas.html">Intro to Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Familiarity with working with dataframes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy/numpy-basics.html">Intro to Numpy</a></p></td>
 <td><p>Necessary</p></td>
 <td><p>Familiarity with working with arrays</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy-1.13.1/tutorial/fft.html">Intro to SciPy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Familiarity with working with wave files and FFT</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <ul class="simple">
-<li><p><strong>Time to learn</strong>: estimate in minutes. For a rough idea, use 5 mins per subsection, 10 if longer; add these up for a total. Safer to round up and overestimate.</p></li>
-<li><p><strong>System requirements</strong>:</p>
-<ul>
-<li><p>Populate with any system, version, or non-Python software requirements if necessary</p></li>
-<li><p>Otherwise use the concepts table above and the Imports section below to describe required packages as necessary</p></li>
-<li><p>If no extra requirements, remove the <strong>System requirements</strong> point altogether</p></li>
-</ul>
-</li>
+<li><p><strong>Time to learn</strong>: 45 minutes</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -468,18 +465,21 @@
 </section>
 <section id="wavelets-and-atmospheric-data">
 <h3>Wavelets and Atmospheric Data<a class="headerlink" href="#wavelets-and-atmospheric-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>TODO</p>
+<p>Weather is a great example of time-series data. Weather varies in cycles of temperature over weeks due to a huge vareity of variables. Wavelet analysis can be used to find patterns in temperature by analyzing both the temperature and the time when the temperature occurs.</p>
 </section>
 </section>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pywt</span>                      <span class="c1"># PyWavelets</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>               <span class="c1"># complex numbers (real and imaginary)</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>              <span class="c1"># working with geocat-datafiles</span>
-<span class="kn">import</span> <span class="nn">geocat.datafiles</span> <span class="k">as</span> <span class="nn">gcd</span>   <span class="c1"># accessing nino 3 data file</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># plot data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geocat.datafiles</span> <span class="k">as</span> <span class="nn">gcd</span>              <span class="c1"># accessing nino3 data file</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>                         <span class="c1"># working with geocat-datafiles</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                          <span class="c1"># working with arrays</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                         <span class="c1"># working with dataframes</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>             <span class="c1"># plot data</span>
+
+<span class="kn">import</span> <span class="nn">pywt</span>                                 <span class="c1"># PyWavelets</span>
 </pre></div>
 </div>
 </div>
@@ -489,16 +489,15 @@
 </div>
 </div>
 </div>
-<section id="download-and-organize-nino-3-sst-data">
-<h3>Download and Organize Nino 3 SST Data<a class="headerlink" href="#download-and-organize-nino-3-sst-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="download-nino-3-sst-data">
+<h2>Download Nino 3 SST Data<a class="headerlink" href="#download-nino-3-sst-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="download-nino-3-data-from-geocat-datafiles">
-<h4>Download Nino 3 data from geocat-datafiles<a class="headerlink" href="#download-nino-3-data-from-geocat-datafiles" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<h3>Download Nino 3 data from <a class="reference external" href="https://github.com/NCAR/geocat-datafiles/tree/main/ascii_files">geocat-datafiles</a><a class="headerlink" href="#download-nino-3-data-from-geocat-datafiles" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download nino3 data</span>
-<span class="n">nino3_data</span> <span class="o">=</span> <span class="n">gcd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ascii_files/sst_nino3.dat&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nino3_data</span> <span class="o">=</span> <span class="n">gcd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ascii_files/sst_nino3.dat&#39;</span><span class="p">)</span>
 <span class="n">nino3_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -506,58 +505,15 @@
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading file &#39;ascii_files/sst_nino3.dat&#39; from &#39;https://github.com/NCAR/GeoCAT-datafiles/raw/main/ascii_files/sst_nino3.dat&#39; to &#39;/home/runner/.cache/geocat&#39;.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.15 -0.3  -0.14 -0.41 -0.46 -0.66 -0.5  -0.8  -0.95 -0.72 -0.31 -0.71
- -1.04 -0.77 -0.86 -0.84 -0.41 -0.49 -0.48 -0.72 -1.21 -0.8   0.16  0.46
-  0.4   1.    2.17  2.5   2.34  0.8   0.14 -0.06 -0.34 -0.71 -0.34 -0.73
- -0.48 -0.11  0.22  0.51  0.51  0.25 -0.1  -0.33 -0.42 -0.23 -0.53 -0.44
- -0.3   0.15  0.09  0.19 -0.06  0.25  0.3   0.81  0.26  0.1   0.34  1.01
- -0.31 -0.9  -0.73 -0.92 -0.73 -0.31 -0.03  0.12  0.37  0.82  1.22  1.83
-  1.6   0.34 -0.72 -0.87 -0.85 -0.4  -0.39 -0.65  0.07  0.67  0.39  0.03
- -0.17 -0.76 -0.87 -1.36 -1.1  -0.99 -0.78 -0.93 -0.87 -0.44 -0.34 -0.5
- -0.39 -0.04  0.42  0.62  0.17  0.23  1.03  1.54  1.09  0.01  0.12 -0.27
- -0.47 -0.41 -0.37 -0.36 -0.39  0.43  1.05  1.58  1.25  0.86  0.6   0.21
-  0.19 -0.23 -0.29  0.18  0.12  0.71  1.42  1.59  0.93 -0.25 -0.66 -0.95
- -0.47  0.06  0.7   0.81  0.78  1.43  1.22  1.05  0.44 -0.35 -0.67 -0.84
- -0.66 -0.45 -0.12 -0.2  -0.16 -0.47 -0.52 -0.79 -0.8  -0.62 -0.86 -1.29
- -1.04 -1.05 -0.75 -0.81 -0.9  -0.25  0.62  1.22  0.96  0.21 -0.11 -0.25
- -0.24 -0.43  0.23  0.67  0.78  0.41  0.98  1.28  1.45  1.02  0.03 -0.59
- -1.34 -0.99 -1.49 -1.74 -1.33 -0.55 -0.51 -0.36 -0.99  0.32  1.04  1.41
-  0.99  0.66  0.5   0.22  0.71 -0.16  0.38  0.   -1.11 -1.04  0.05 -0.64
- -0.34 -0.5  -1.85 -0.94 -0.78  0.29  0.27  0.69 -0.06 -0.83 -0.8  -1.02
- -0.96 -0.09  0.62  0.87  1.03  0.7  -0.1  -0.31  0.04 -0.46  0.04  0.24
- -0.08 -0.28  0.06  0.05 -0.31  0.11  0.27  0.26  0.04  0.12  1.11  1.53
-  1.23  0.17 -0.18 -0.56  0.05  0.41  0.22  0.04 -0.19 -0.46 -0.65 -1.06
- -0.54  0.14  0.25 -0.21 -0.73 -0.43  0.48  0.26  0.05  0.11 -0.27 -0.08
- -0.1   0.29 -0.15 -0.28 -0.55 -0.44 -1.4  -0.55 -0.69  0.58  0.37  0.42
-  1.83  1.23  0.65  0.41  1.03  0.64 -0.07  0.98  0.36 -0.3  -1.33 -1.39
- -0.94  0.34 -0.   -0.15  0.06  0.39  0.36 -0.49 -0.53  0.35  0.07 -0.24
-  0.2  -0.22 -0.68 -0.44  0.02 -0.22 -0.3  -0.59  0.1  -0.02 -0.27 -0.6
- -0.48 -0.37 -0.53 -1.35 -1.22 -0.99 -0.34 -0.79 -0.24  0.02  0.69  0.78
-  0.17 -0.17 -0.29 -0.27  0.31  0.44  0.38  0.24 -0.13 -0.89 -0.76 -0.71
- -0.37 -0.59 -0.63 -1.47 -0.4  -0.18 -0.37 -0.43 -0.06  0.61  1.33  1.19
-  1.13  0.31  0.14  0.03  0.21  0.15 -0.22 -0.02  0.03 -0.17  0.12 -0.35
- -0.06  0.38 -0.45 -0.32 -0.33 -0.49 -0.14 -0.56 -0.18  0.46  1.09  1.04
-  0.23 -0.99 -0.59 -0.92 -0.28  0.52  1.31  1.45  0.61 -0.11 -0.18 -0.39
- -0.39 -0.36 -0.5  -0.81 -1.1  -0.29  0.57  0.68  0.78  0.78  0.63  0.98
-  0.49 -0.42 -1.34 -1.2  -1.18 -0.65 -0.42 -0.97 -0.28  0.77  1.77  2.22
-  1.05 -0.67 -0.99 -1.52 -1.17 -0.22 -0.04 -0.45 -0.46 -0.75 -0.7  -1.38
- -1.15 -0.01  0.97  1.1   0.68 -0.02 -0.04  0.47  0.3  -0.55 -0.51 -0.09
- -0.01  0.34  0.61  0.58  0.33  0.38  0.1   0.18 -0.3  -0.06 -0.28  0.12
-  0.58  0.89  0.93  2.39  2.44  1.92  0.64 -0.24  0.27 -0.13 -0.16 -0.54
- -0.13 -0.37 -0.78 -0.22  0.03  0.25  0.31  1.03  1.1   1.05  1.11  1.28
-  0.57 -0.55 -1.16 -0.99 -0.38  0.01 -0.29  0.09  0.46  0.57  0.24  0.39
-  0.49  0.86  0.51  0.95  1.25  1.33 -0.    0.34  0.66  1.11  0.34  0.48
-  0.56  0.39 -0.17  1.04  0.77  0.12 -0.35 -0.22  0.08 -0.08 -0.18 -0.06]
-</pre></div>
-</div>
 </div>
 </div>
 </section>
+</section>
 <section id="plot-and-view-data">
-<h4>Plot and View Data<a class="headerlink" href="#plot-and-view-data" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<h2>Plot and View Data<a class="headerlink" href="#plot-and-view-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;El Niño Sea Surface Temperature&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Years (from 1871)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sea Surface Temparture Changes&quot;</span><span class="p">)</span>
@@ -567,10 +523,41 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9a8003bee18f56be21707b5fd6e885608a7fae8737409702ad810a0a63261d94.png" src="../../_images/9a8003bee18f56be21707b5fd6e885608a7fae8737409702ad810a0a63261d94.png" />
+<img alt="../../_images/e4f95fe06e685df6981618082eaca0259ced17375f5bf00bb96026207f99de27.png" src="../../_images/e4f95fe06e685df6981618082eaca0259ced17375f5bf00bb96026207f99de27.png" />
 </div>
 </div>
-</section>
+<section id="update-the-x-axis">
+<h3>Update the X-Axis<a class="headerlink" href="#update-the-x-axis" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>By default, the data loaded in lists the year as time since 1871, we can add a new x-axis to view the years along the x-axis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert default X-axis from time steps of 0-504 (0-len(nino3_data)) to Years</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># sampling period</span>
+<span class="n">start_year</span> <span class="o">=</span> <span class="mi">1871</span>
+<span class="n">end_year</span> <span class="o">=</span> <span class="mi">1871</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">x_tickrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">9</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># 36, starts the x-axis label at 1880 (9 years after start of data)</span>
+<span class="n">display_nth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># 80, display x-axis label every 20 years</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;El Niño Sea Surface Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sea Surface Temparture Changes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_tickrange</span><span class="p">))[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">],</span> <span class="n">x_tickrange</span><span class="p">[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">])</span> <span class="c1"># update x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/946a53b3be859b25a2d8a80a7961a5c80a8c72b4395b2253a31e51fe2caeed9f.png" src="../../_images/946a53b3be859b25a2d8a80a7961a5c80a8c72b4395b2253a31e51fe2caeed9f.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="wavelet-input-values">
@@ -589,7 +576,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># sampling period (time between each y-value)</span>
 <span class="n">s0</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># smallest scale</span>
 <span class="n">dj</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># spacing between each discrete scales</span>
-<span class="n">jtot</span> <span class="o">=</span> <span class="mi">44</span>  <span class="c1"># largest scale</span>
+<span class="n">jtot</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># largest scale</span>
 </pre></div>
 </div>
 </div>
@@ -614,8 +601,8 @@
 </div>
 </section>
 </section>
-<section id="pywavelets">
-<h2>PyWavelets<a class="headerlink" href="#pywavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="applying-wavelets">
+<h2>Applying Wavelets<a class="headerlink" href="#applying-wavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">jtot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dj</span><span class="p">)</span>
@@ -629,10 +616,10 @@
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The power spectrum is the real component of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code>. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># power spectrum (absolute value squared)</span>
-<span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -641,31 +628,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="c1"># Convert Y-Axis from default to symmetrical log (symlog) with labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;symlog&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
-
-<span class="c1"># Plot contour around data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span>
-    <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
-
-<span class="c1"># Plot Scalogram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
 <span class="p">)</span>
 
-<span class="c1"># Convert default X-axis from time steps of 0-504 (0-len(nino3_data)) to Years</span>
-<span class="n">start_year</span> <span class="o">=</span> <span class="mi">1871</span>
-<span class="n">end_year</span> <span class="o">=</span> <span class="mi">1871</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nino3_data</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
-<span class="n">x_tickrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
-<span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">9</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># 36, starts the x-axis label at 1880 (9 years after start of data)</span>
-<span class="n">display_nth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># 80, display x-axis label every 20 years</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_tickrange</span><span class="p">))[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">],</span> <span class="n">x_tickrange</span><span class="p">[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">])</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;El Niño Wavelet Power Spectrum&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale&quot;</span><span class="p">)</span>
@@ -675,9 +642,45 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/68f7cd70cebc4a51580943cf96822844e6d308f0f8790fa35476d7bb4a6db5ec.png" src="../../_images/68f7cd70cebc4a51580943cf96822844e6d308f0f8790fa35476d7bb4a6db5ec.png" />
+<img alt="../../_images/82a532ec5585e06da2e4449d74025f147be6907972c77eb29bbd698281eaba85.png" src="../../_images/82a532ec5585e06da2e4449d74025f147be6907972c77eb29bbd698281eaba85.png" />
 </div>
 </div>
+<section id="better-match-original-graph">
+<h3>Better Match Original Graph<a class="headerlink" href="#better-match-original-graph" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>We can clean up this diagram to better match the original Torrence and Compo paper by modifying the y-axis and plotting a contour around the data to better view the differences in the color bar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot contour around data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="c1"># Plot Scalogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_tickrange</span><span class="p">))[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">],</span> <span class="n">x_tickrange</span><span class="p">[</span><span class="n">start</span><span class="p">::</span><span class="n">display_nth</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;El Niño Wavelet Power Spectrum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a4a07b8abc2af56628e865c516eb0fe29fd99bdeca4f50bb65400d610b0fd9bb.png" src="../../_images/a4a07b8abc2af56628e865c516eb0fe29fd99bdeca4f50bb65400d610b0fd9bb.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="cone-of-influence">
+<h2>Cone of Influence<a class="headerlink" href="#cone-of-influence" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>TODO</p>
 </section>
 <section id="phase-spectrum">
 <h2>Phase Spectrum<a class="headerlink" href="#phase-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -721,30 +724,26 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1a92723bd17b8a8224e33369f142451b2313fe681f30925bef79eb009223e218.png" src="../../_images/1a92723bd17b8a8224e33369f142451b2313fe681f30925bef79eb009223e218.png" />
+<img alt="../../_images/20b889de643e32d8e6cd785c14f2ade265b7d4484f0814feb52b3068d5d7f66d.png" src="../../_images/20b889de643e32d8e6cd785c14f2ade265b7d4484f0814feb52b3068d5d7f66d.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Add one final <code class="docutils literal notranslate"><span class="pre">---</span></code> marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.</p>
+<p>Frequency signals appear in more than just audio! A frequency analysis of weather data can inform us about how weather trends change through a year and over a decades worth of data</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Let Jupyter book tie this to the next (sequential) piece of content that people could move on to down below and in the sidebar. However, if this page uniquely enables your reader to tackle other nonsequential concepts throughout this book, or even external content, link to it here!</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/regression/index.html">Learn how more about PyWavelets</a></p></li>
+</ul>
 </section>
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Finally, be rigorous in your citations and references as necessary. Give credit where credit is due. Also, feel free to link to relevant external material, further reading, documentation, etc. Then you’re done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">All</span> <span class="pre">Cells...</span></code> to confirm that your notebook will cleanly run from start to finish</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Clear</span> <span class="pre">All</span> <span class="pre">Outputs...</span></code> before committing your notebook, our machines will do the heavy lifting</p></li>
-<li><p>Take credit! Provide author contact information if you’d like; if so, consider adding information here at the bottom of your notebook</p></li>
-<li><p>Give credit! Attribute appropriate authorship for referenced code, information, images, etc.</p></li>
-<li><p>Only include what you’re legally allowed: <strong>no copyright infringement or plagiarism</strong></p></li>
+<li><p><a class="reference external" href="https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf">“A Practical Guide to Wavelet Analysis” (Torrence and Compo, 1998)</a></p></li>
 </ul>
-<p>Thank you for your contribution!</p>
 </section>
 </section>
 
@@ -811,20 +810,25 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelets-and-atmospheric-data">Wavelets and Atmospheric Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-organize-nino-3-sst-data">Download and Organize Nino 3 SST Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-nino-3-data-from-geocat-datafiles">Download Nino 3 data from geocat-datafiles</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-and-view-data">Plot and View Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-nino-3-sst-data">Download Nino 3 SST Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-nino-3-data-from-geocat-datafiles">Download Nino 3 data from geocat-datafiles</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-and-view-data">Plot and View Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-x-axis">Update the X-Axis</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-input-values">Wavelet Input Values</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-complex-morlet">Define Complex Morlet</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pywavelets">PyWavelets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-wavelets">Applying Wavelets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#better-match-original-graph">Better Match Original Graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cone-of-influence">Cone of Influence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-spectrum">Phase Spectrum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
@@ -1073,7 +1077,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 2 August 2024.
+  Last updated on 20 September 2024.
   <br/>
 </p>
   </div>
@@ -1127,7 +1131,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 2 August 2024.
+          Last updated on 20 September 2024.
         </p>
       </div>
     </div>

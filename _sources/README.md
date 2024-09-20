@@ -9,7 +9,7 @@
 This Project Pythia Cookbook covers working with wavelets in Python
 
 ## Motivation
-Wavelets are a tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time vs. frequency limitations of Fourier Transforms
+Wavelets are a powerful tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time vs. frequency limitations of Fourier Transforms
 
 ## Authors
 
@@ -23,17 +23,20 @@ Wavelets are a tool to analysis time-series data. When data frequencies vary ove
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook is broken into two main sections:
+
+- Foundations
+- Example Workflow
 
 ### Foundations
 
-- Wavelet Basics
+"Wavelet Basics" covers the motivation and background for wavelet analysis by review time-series data and the strengths and weaknesses of Fourier transform
 
 ### Example Workflows
 
-- PyWavelets and Jingle Bells
-- Spy Keypad
-- Atmospheric Data: nino3
+- "PyWavelets and Jingle Bells": Learn how to use `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
+- "Spy Keypad": Learn how to use wavelets to undercover the frequency and order of notes in an unkonwn piece of audio data
+- "Atmospheric Data: nino3": Replicate the power wavelet scalogram from the original 1999 Torrence and Compo paper in Python
 
 ## Running the Notebooks
 
