@@ -2,9 +2,9 @@
 
 # Wavelet Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![nightly-build](https://github.com/cyschneck/wavelet-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/cyschneck/wavelet-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/cyschneck/wavelet-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/837365470.svg)](https://zenodo.org/badge/latestdoi/837365470)
 
 This Project Pythia Cookbook covers working with wavelets in Python
 
