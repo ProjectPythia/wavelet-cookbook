@@ -43,6 +43,6 @@ authors:
     website: https://github.com/kmpaul
     affiliation: NVIDIA
   - name: "Cookbook Template contributors" # use the 'name' field to acknowledge organizations
-    website: "https://github.com/cyschneck/wavelet-cookbook/graphs/contributors"
+    website: "https://github.com/ProjectPythia/wavelet-cookbook/graphs/contributors"
 title: "Cookbook Template"
 abstract: "A sample cookbook description."
