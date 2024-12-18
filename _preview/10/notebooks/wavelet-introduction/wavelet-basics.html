@@ -489,9 +489,11 @@
 <hr class="docutils" />
 <section id="load-wav-file-for-audio">
 <h2>Load .wav File for Audio<a class="headerlink" href="#load-wav-file-for-audio" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="load-wav-file-data">
-<h3>Load .wav file data<a class="headerlink" href="#load-wav-file-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>For this example, we will be using a short .wav file (jingle_bells.wav) that contains the first few notes of “Jingle Bells”.</p>
+<p>For this example, we will be using a short .wav file (<a class="reference external" href="https://github.com/ProjectPythia/wavelet-cookbook/blob/main/notebooks/data/jingle_bells.wav">jingle_bells.wav</a>) that contains the first few notes of “Jingle Bells”.</p>
+<p>Jingle Bells is a simple musical piece that is taught to beginners and children since it can be entirely played with one hand on the piano. For the purpose of this example, we will be analyzing the first three lines of “Jingle Bells”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
+</pre></div>
+</div>
 <p>We can load in the <code class="docutils literal notranslate"><span class="pre">jingle_bell.wav</span></code> file with the <code class="docutils literal notranslate"><span class="pre">scipy.io.wavfile()</span></code> function. This <code class="docutils literal notranslate"><span class="pre">scipy</span></code> function will return both the sample rate of the data and the frequency of the data.</p>
 <p>The length of the .wav file can be determined as a ratio of the length of the file and the sample rate to determine the duration in seconds.</p>
 <div class="cell docutils container">
@@ -519,7 +521,6 @@ Duration = 15.6991 seconds
 </div>
 </div>
 </div>
-</section>
 <section id="convert-wav-file-to-pandas-dataframe">
 <h3>Convert .wav file to pandas dataframe<a class="headerlink" href="#convert-wav-file-to-pandas-dataframe" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Currently, the <code class="docutils literal notranslate"><span class="pre">signal_data</span></code> is stored as a numpy array, but to make it easy to plot, we will store the .wav file as a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe. This will also associate the specific time (in seconds) with the <code class="docutils literal notranslate"><span class="pre">signal_data</span></code> amplitude.</p>
@@ -616,10 +617,6 @@ Duration = 15.6991 seconds
 <li><p>How much do the dominant frequencies overcome background noise?</p></li>
 </ul>
 <p>Fourier Transform is a common tool that can be used to determine which frequencies are present from raw data. For this “Jingle Bells” musical example, a Fourier Transform will return the frequencies of all the notes that are present.</p>
-<p>Jingle Bells is a simple musical piece that is taught to beginners and children since it can be entirely played with one hand on the piano. For the purpose of this example, we will be analyzing the first three lines of “Jingle Bells”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
-</pre></div>
-</div>
 </section>
 <section id="fast-fourier-transform-of-signal-data">
 <h3>Fast Fourier Transform of Signal Data<a class="headerlink" href="#fast-fourier-transform-of-signal-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -636,7 +633,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="plot-frequency-prevalence-from-fast-fourier-transform">
 <h3>Plot Frequency Prevalence from Fast Fourier Transform<a class="headerlink" href="#plot-frequency-prevalence-from-fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>To begin, we can plot the Fourier Transform with relation to how frequent a frequency appears.</p>
+<p>To begin, we can plot the Fourier Transform with relation to how frequently a frequency appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -654,7 +651,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="only-plot-positive-frequencies-hz-in-range-of-notes-200-500">
 <h3>Only plot positive Frequencies (hz) in range of notes (200-500)<a class="headerlink" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>You might have noticed that the frequencies are mirrored across the 0 Hz, so for simplicity sake, we can zoom in and only pay attention to the relevant range of frequencies. For this example, we will pay attention the postive frequencies between the range frequencies of 200 to 500 Hz.</p>
+<p>You might have noticed that the frequencies are mirrored across the 0 Hz, so for simplicity sake, we can zoom in and only pay attention to the relevant range of frequencies. For this example, we will pay attention the postive frequencies between the range frequencies of 200 to 500 Hz where the frequencies for A to G are found.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -671,8 +668,8 @@ Duration = 15.6991 seconds
 </div>
 </div>
 </section>
-<section id="plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes">
-<h3>Plot Fast Fourier Transform for Frequency Prevalence with Frequency of Notes<a class="headerlink" href="#plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="plot-fast-fourier-transform">
+<h3>Plot Fast Fourier Transform<a class="headerlink" href="#plot-fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>We can already start to see the peaks in our data that represent the frequencies in the signal data. There are four apparent peaks, but what notes do they represent?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,15 +746,15 @@ Duration = 15.6991 seconds
 <h2>Wavelet Transform - Frequency and Time<a class="headerlink" href="#wavelet-transform-frequency-and-time" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="what-is-a-wavelet">
 <h3>What is a Wavelet?<a class="headerlink" href="#what-is-a-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>A wavelet is a short wave-like oscillation that averages out to zero.</p>
+<p>In its simplest form, a wavelet is a short wave-like oscillation that averages out to zero.</p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MorletWaveletMathematica.svg/1024px-MorletWaveletMathematica.svg.png" alt="Morlet Wavelet on Wikipedia" width=350/>
 </p>
 <blockquote>
 <div><p>Many signals and images of interest exhibit piecewise smooth behavior punctuated by transients. Speech signals are characterized by short bursts encoding consonants followed by steady-state oscillations indicative of vowels. Natural images have edges. Financial time series exhibit transient behavior, which characterize rapid upturns and downturns in economic conditions. Unlike the Fourier basis, wavelet bases are adept at sparsely representing piecewise regular signals and images, which include transient behavior.</p>
-<p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html">Mathworks</a>: “What is a Wavelet”</p>
+<p><a class="reference internal" href="#(https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html)"><span class="xref myst">Mathworks: “What is a Wavelet”</span></a></p>
 </div></blockquote>
-<p>Fourier transforms are made up of multiple sine waves of different and various frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about when each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier, wavelet works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is match by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
+<p>Fourier transforms are made up of multiple sine waves of different and various frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analysis works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is match by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
 </section>
 </section>
 <section id="wavelet-terminology">
@@ -765,7 +762,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="wavelet-inputs">
 <h2>Wavelet Inputs<a class="headerlink" href="#wavelet-inputs" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Wavelets accept additional parameters as well as the time-series signal data:</p>
+<p>Wavelet analysis accept additional parameters as well as the time-series signal data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wavelet</span> <span class="n">name</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">jtot</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -783,12 +780,13 @@ Duration = 15.6991 seconds
 </section>
 <section id="mother-wavelet">
 <h3>Mother Wavelet<a class="headerlink" href="#mother-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Wavelets are a powerful tool for processing time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Wavelets are an answer to this limitation in Fourier Transform. However, due to Heisenberg’s Uncertainty Principle, it is impossible to totally know both the exact frequency and the exact time that the frequency occurs in a signal. Wavelet transform provide a solution for returning both the frequency and time by reducing the precision of the frequency. We will see how this precision varies, but as a result it can be useful to not entirely abandon Fourier Transform. Wavelets and Fourier Transform can both be used to analysis data, by utilizing their strengths and offsetting their weaknesses.</p>
 <p>While a Fourier Transform uses various sine waves to match possible frequencies in a signal, a wavelet is a short wave of with various shapes to match possible frequencies and frequency ranges. A wavelet is a small wave over a finite length of time. There are many possible wavelet forms to use, known as Mother Wavelets. Each type of Mother Wavelet is sensitive to a range of possible signals.</p>
 <p>There are a lot of different kind of wavelets to choose from!</p>
 <section id="examples-of-possible-mother-wavelets-from-pywavelets">
 <h4>Examples of Possible Mother Wavelets from <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html">PyWavelets</a><a class="headerlink" href="#examples-of-possible-mother-wavelets-from-pywavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <p>Below we can view all the possible mother wavelets present in <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code>. There are many different types that are sensitive to different types of frequencies from different types of signals. Most wavelets have a real and imaginary component, which will be used to generate a power and phase spectrum graph from signal data.</p>
+<p>Below are the wavelets available from <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code>. As you will notice, most continuous wavelets (CWT) have a real and imaginary component. Typically, only the real component of a wavelet is graphed, but both components include potentially useful information.</p>
+<p>Different mother wavelets are useful to analyzing data for different features. Morlet is a common wavelet for analyzing the frequencies in data, while Paul is useful to analyze how a signal changes over time and DOG can be used to find discontinuities in data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavlist</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;continuous&quot;</span><span class="p">)</span>
@@ -811,14 +809,14 @@ Duration = 15.6991 seconds
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Available wavelets for CWT&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Available wavelets for CWT in PyWavelets&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/50ded0e628d2c9733a8d71ff2dfff30a597ceae42262ddec5a908845c9918787.png" src="../../_images/50ded0e628d2c9733a8d71ff2dfff30a597ceae42262ddec5a908845c9918787.png" />
+<img alt="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" src="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" />
 </div>
 </div>
 </section>
@@ -842,11 +840,7 @@ Duration = 15.6991 seconds
 <section id="continuous-wavelet-transform-cwt-vs-discrete-wavelet-transform-dwt">
 <h3>Continuous Wavelet Transform (CWT) vs. Discrete Wavelet Transform (DWT)<a class="headerlink" href="#continuous-wavelet-transform-cwt-vs-discrete-wavelet-transform-dwt" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>There are two classes of wavelets: continuous and discrete wavelet transforms.</p>
-<p>The continuous wavelet transform (CWT) are useful when working with time-frequency data and working with changing frequencies.</p>
-<p>From <a class="reference external" href="https://www.mathworks.com/discovery/wavelet-transforms.html">MathWorks</a>:</p>
-<blockquote>
-<div><p>Analyzing a hyperbolic chirp signal (left) with two components that vary over time in MATLAB. The short-time Fourier transform (center) does not clearly distinguish the instantaneous frequencies, but the continuous wavelet transform (right) accurately captures them</p>
-</div></blockquote>
+<p>Continuous wavelet transform (CWT) are useful when working with time-frequency data and working with changing frequencies.</p>
 <p align="center">
   <img src="https://www.mathworks.com/discovery/wavelet-transforms/_jcr_content/mainParsys/image.adapt.full.medium.jpg/1718282330785.jpg" alt="MathWorks CWT example" />
 </p>
@@ -858,7 +852,8 @@ Duration = 15.6991 seconds
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Time series data records a signal over a set interval of time sequences, like the amplitude of a note every 1/10th of a second for music or the temperature every month for weather. Fourier Transform can return the frequency of a signal, but without information about the time when the frequency occurs. Wavelet transform, unlike Fourier Transform, provide a solution for returning both the frequency and time. However, due to Heisenberg’s Uncertainty Principle, it is impossible to know both the <em>exact</em> frequency and the <em>exact</em> time that the frequency occurs. Fourier Transform can return highly precise information about the frequencies in a signal and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
+<p>Wavelets are a powerful tool for processing time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Wavelets are an answer to this limitation in Fourier Transform. However, due to Heisenberg’s Uncertainty Principle, it is impossible to totally know both the exact frequency and the exact time that the frequency occurs in a signal. Fourier Transform can return highly precise information about the frequencies in a signal and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
+<p>We will see how this precision varies, but as a result it can be useful to not entirely abandon Fourier Transform. Wavelets and Fourier Transform can both be used to analysis data, by utilizing their strengths and offsetting eachothers weaknesses.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p><strong>Up next: apply wavelet transforms to determine the order of frequency signals for music and weather analysis!</strong></p>
@@ -943,7 +938,6 @@ Duration = 15.6991 seconds
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-for-audio">Load .wav File for Audio</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-data">Load .wav file data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-wav-file-to-pandas-dataframe">Convert .wav file to pandas dataframe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-small-sample-of-the-wav-file">Plot a Small Sample of the .wav File</a></li>
 </ul>
@@ -953,7 +947,7 @@ Duration = 15.6991 seconds
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-of-signal-data">Fast Fourier Transform of Signal Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-frequency-prevalence-from-fast-fourier-transform">Plot Frequency Prevalence from Fast Fourier Transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500">Only plot positive Frequencies (hz) in range of notes (200-500)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes">Plot Fast Fourier Transform for Frequency Prevalence with Frequency of Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fast-fourier-transform">Plot Fast Fourier Transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-predicts-four-notes">Fast Fourier Transform Predicts Four Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-what">Now What?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-to-determine-both-frequency-and-time-youll-need-a-different-tool-wavelets">But to determine <strong>both</strong> frequency <strong>and</strong> time, you’ll need a different tool: <strong>wavelets!</strong></a></li>
