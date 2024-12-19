@@ -1,6 +1,15 @@
 thumbnail: thumbnail.png
 tags:
   domains:
-    - sampledomain
+    - signal analysis
+    - wavelet
+    - data science
+    - fourier transform
   packages:
-    - samplepackage
+    - geocat-datafiles
+    - numpy
+    - xarray
+    - matplotlib
+    - scipy
+    - pandas
+    - pywavelets

@@ -6,7 +6,7 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/815311051.svg)](https://zenodo.org/badge/latestdoi/815311051)
 
-This Project Pythia Cookbook covers working with wavelets in Python
+This Project Pythia Cookbook covers how to work with wavelets in Python
 
 ## Motivation
 Wavelets are a powerful tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time/frequency limitations of Fourier Transforms
