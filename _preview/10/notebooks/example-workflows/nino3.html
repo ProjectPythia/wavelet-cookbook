@@ -473,7 +473,7 @@
 </section>
 <section id="wavelets-and-atmospheric-data">
 <h3>Wavelets and Atmospheric Data<a class="headerlink" href="#wavelets-and-atmospheric-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Weather is a great example of time-series data. Weather varies in cycles of temperature over weeks due to a huge variety of variables. Wavelet analysis can be used to find patterns in temperature by analyzing both the temperature and the time when the temperature occurs.</p>
+<p>Weather is a great example of time-series data. Weather varies in cycles of temperature over weeks due to a huge number of variables. Wavelet analysis can be used to find patterns in temperature by analyzing both the temperature and the time when the temperature occurs.</p>
 </section>
 </section>
 <section id="imports">
@@ -535,7 +535,7 @@
 </div>
 <section id="update-the-x-axis">
 <h3>Update the X-Axis<a class="headerlink" href="#update-the-x-axis" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>By default, the data loaded in lists the year as time since 1871, we can add a new x-axis to view the years along the x-axis</p>
+<p>By default, the loaded data lists the year as time since 1871, we can add a new x-axis to view the years along the x-axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert default X-axis from time steps of 0-504 (0-len(nino3_data)) to Years</span>
@@ -592,28 +592,19 @@
 <h3>Define Complex Morlet<a class="headerlink" href="#define-complex-morlet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>A complex Morlet allows us to define both the bandwidth and the center frequency that the Morlet wavelet will be built from to produce optimal results.</p>
 <p><a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html#wavelet-bandwidth-and-center-frequencies">Here you can learn more about how <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code> configures Complex Morlet wavelets</a></p>
-<p>Below you can see how changing the bandwith and center frequency will change how the mother Complex Morlet wavelet’s shape is formed. The shape of the wavelet will impact which frequencies it is sensitive to.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelets</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;cmor</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]]</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">wavelet</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">wavelets</span><span class="p">):</span>
-    <span class="p">[</span><span class="n">psi</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">ContinuousWavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span><span class="o">.</span><span class="n">wavefun</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;imag&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Complex Morlet Wavelets with different center frequencies and bandwidths from PyWaveletse&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/83a500da9d199e6f5258574900f6e4c662cfda286e1065862a11419df0071fb5.png" src="../../_images/83a500da9d199e6f5258574900f6e4c662cfda286e1065862a11419df0071fb5.png" />
-</div>
-</div>
+<p>Below you can see how changing the bandwidth and center frequency will change how the mother Complex Morlet wavelet’s shape is formed. The shape of the wavelet will impact which frequencies it is sensitive to.</p>
+<p>wavelets = [f”cmor{x:.1f}-{y:.1f}” for x in [0.5, 1.5, 2.5] for y in [0.5, 1.0, 1.5]]
+fig, axs = plt.subplots(3, 3, figsize=(10, 10), sharex=True, sharey=True)
+for ax, wavelet in zip(axs.flatten(), wavelets):
+[psi, x] = pywt.ContinuousWavelet(wavelet).wavefun(10)
+ax.plot(x, np.real(psi), label=“real”)
+ax.plot(x, np.imag(psi), label=“imag”)
+ax.set_title(wavelet)
+ax.set_xlim([-5, 5])
+ax.set_ylim([-0.8, 1])
+ax.legend()
+plt.suptitle(“Complex Morlet Wavelets with different center frequencies and bandwidths from PyWavelets”)
+plt.show()</p>
 <p>Changing the bandwidth and center frequency can be a useful tool to optimize how well the mother wavelet will be able to find frequencies in the data.</p>
 <p>Below you will see how different values for bandwidth and center frequency can lead to greater or poorer resolution of the same signal.</p>
 <div class="cell docutils container">
@@ -657,13 +648,13 @@
 <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">wavelet</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">wavelets</span><span class="p">):</span>
     <span class="n">plot_wavelet</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">chirp</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Scaleograms of the same signal with different wavelets&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Scalograms of the same signal with different wavelets&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ef824433e36c31a71954ea97eceb99adb078e9a6ec257dcb14244bfec1951b00.png" src="../../_images/ef824433e36c31a71954ea97eceb99adb078e9a6ec257dcb14244bfec1951b00.png" />
+<img alt="../../_images/53d1a18102c93e190d4353740f640b490412e7c0c736550fa08408a6f14f70dd.png" src="../../_images/53d1a18102c93e190d4353740f640b490412e7c0c736550fa08408a6f14f70dd.png" />
 </div>
 </div>
 <p><strong>For this example, we will be using a complex Morlet with a bandwidth of 1.5 and a center frequency of 1</strong></p>
@@ -699,7 +690,7 @@
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum is the real component of the wavelet coefficents. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to better graph.</p>
+<p>The power spectrum is the real component of the wavelet coefficents. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>

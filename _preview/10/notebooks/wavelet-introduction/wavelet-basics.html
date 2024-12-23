@@ -620,7 +620,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="fast-fourier-transform-of-signal-data">
 <h3>Fast Fourier Transform of Signal Data<a class="headerlink" href="#fast-fourier-transform-of-signal-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>To find determine what notes are present, we can first apply Fast Fourier Transform to the .wav file data with the <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fft()</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fftfreq()</span></code> fucntions in <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. These will both return <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays with information about which frequencies are present in the .wav file as well as how frequently they appear.</p>
+<p>To find determine what notes are present, we can first apply Fast Fourier Transform to the .wav file data with the <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fft()</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fftfreq()</span></code> functions in <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. These will both return <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays with information about which frequencies are present in the .wav file as well as how frequently they appear.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply FFT to Input Data</span>
@@ -651,7 +651,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="only-plot-positive-frequencies-hz-in-range-of-notes-200-500">
 <h3>Only plot positive Frequencies (hz) in range of notes (200-500)<a class="headerlink" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>You might have noticed that the frequencies are mirrored across the 0 Hz, so for simplicity sake, we can zoom in and only pay attention to the relevant range of frequencies. For this example, we will pay attention the postive frequencies between the range frequencies of 200 to 500 Hz where the frequencies for A to G are found.</p>
+<p>You might have noticed that the frequencies are mirrored across the 0 Hz, so for simplicity’s sake, we can zoom in and only pay attention to the relevant range of frequencies. For this example, we will pay attention to the positive frequencies between the range frequencies of 200 to 500 Hz where the frequencies for A to G are found.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -754,7 +754,7 @@ Duration = 15.6991 seconds
 <div><p>Many signals and images of interest exhibit piecewise smooth behavior punctuated by transients. Speech signals are characterized by short bursts encoding consonants followed by steady-state oscillations indicative of vowels. Natural images have edges. Financial time series exhibit transient behavior, which characterize rapid upturns and downturns in economic conditions. Unlike the Fourier basis, wavelet bases are adept at sparsely representing piecewise regular signals and images, which include transient behavior.</p>
 <p><a class="reference internal" href="#(https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html)"><span class="xref myst">Mathworks: “What is a Wavelet”</span></a></p>
 </div></blockquote>
-<p>Fourier transforms are made up of multiple sine waves of different phase and frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analyze works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is match by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
+<p>Fourier transforms are made up of multiple sine waves of different phases and frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analysis works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is matched by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
 </section>
 </section>
 <section id="wavelet-terminology">
@@ -762,7 +762,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="wavelet-inputs">
 <h2>Wavelet Inputs<a class="headerlink" href="#wavelet-inputs" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Wavelet analysis accept additional parameters as well as the time-series signal data:</p>
+<p>Functions for wavelet analysis accept additional parameters as well as the time-series signal data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wavelet</span> <span class="n">name</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">jtot</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -780,7 +780,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="mother-wavelet">
 <h3>Mother Wavelet<a class="headerlink" href="#mother-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>While a Fourier Transform uses various sine waves to match possible frequencies in a signal, a wavelet is a short wave of with various shapes to match possible frequencies and frequency ranges. A wavelet is a small wave over a finite length of time. There are many possible wavelet forms to use, known as Mother Wavelets. Each type of Mother Wavelet is sensitive to a range of possible signals.</p>
+<p>While a Fourier Transform uses various sine waves to match possible frequencies in a signal, a wavelet is a short wave of various shapes to match possible frequencies and frequency ranges. A wavelet is a small wave over a finite length of time. There are many possible wavelet forms to use, known as Mother Wavelets. Each type of Mother Wavelet is sensitive to a range of possible signals.</p>
 <p>There are a lot of different kind of wavelets to choose from!</p>
 <section id="examples-of-possible-mother-wavelets-from-pywavelets">
 <h4>Examples of Possible Mother Wavelets from <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html">PyWavelets</a><a class="headerlink" href="#examples-of-possible-mother-wavelets-from-pywavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
@@ -831,7 +831,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="scales">
 <h3>Scales<a class="headerlink" href="#scales" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Wavelet matches various frequencies by stretching and shrinking the mother wavelet based on a range of possible scales.</p>
+<p>Wavelets matche various frequencies by stretching and shrinking the mother wavelet based on a range of possible scales.</p>
 <ul class="simple">
 <li><p>Stretched Wavelet: A large wavelet will capture large features, low frequencies, slow frequencies</p></li>
 <li><p>Shrunk Wavelet: A small wavelet will capture small features and high frequencies, as well as sudden changing frequencies</p></li>

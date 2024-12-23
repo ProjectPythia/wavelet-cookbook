@@ -517,7 +517,7 @@
 <p>The continuous wavelet transforms in PyWavelets returns two values:</p>
 <ul class="simple">
 <li><p>coefficents: collection of complex number outputs for wavelet coefficients</p></li>
-<li><p>frequencies: collection of frequencies, if the sampling period are in seconds then frequencies are in hertz otherwise a sampling period of 1 is assumed</p></li>
+<li><p>frequencies: collection of frequencies (if the sampling period are in seconds then frequencies are in hertz otherwise a sampling period of 1 is assumed)</p></li>
 </ul>
 <p>The final size of coefficients depends on the length of the input data and the length of the given scales.</p>
 </section>
@@ -526,7 +526,7 @@
 <section id="scales-vs-frequency">
 <h4>Scales vs. Frequency<a class="headerlink" href="#scales-vs-frequency" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <p>The range of scales are a combination of the smallest scale (s0), spacing between discrete scales (dj), and the maximum scale (jtot).</p>
-<p>For the purpose of this exercise, the musical range of frequencies range from 261 - 494 Hz</p>
+<p>For the purpose of this exercise, the musical range of frequencies range from 261 - 494 Hz.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Note</p></th>
@@ -558,8 +558,9 @@
 </tbody>
 </table>
 </div>
+<p><em>Note: Musical note frequencies can vary, these frequencies are taken from <a class="reference external" href="https://mixbutton.com/mixing-articles/music-note-to-frequency-chart/">here</a></em></p>
 <p>It is good practice to include a range greater than precisely needed. This will make the bands for each frequency in the wavelets clearer.</p>
-<p>For example, scales from 1 to 40 represent a frequency range from 8125 - 208.33 Hz</p>
+<p>Scales will change the shape of the wavelet to have it match a specific frequency. For example, scalings from 1 to 40 represent a frequency range from 8125 - 208.33 Hz.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">signal_data</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;jingle_bells.wav&#39;</span><span class="p">)</span>
 <span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 <span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signal_data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span><span class="p">)</span>
@@ -570,7 +571,7 @@
 </section>
 <section id="extract-audio-wav-file">
 <h2>Extract audio .wav file<a class="headerlink" href="#extract-audio-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The .wav input file contains information about the amplitude at every time step (in seconds) in the file. The frequency of the note will determine which chord each part of the piece represents.</p>
+<p>The .wav input file contains information about the amplitude at every time step (in seconds) in the file. The frequency will determine which note each part of the piece represents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleRate</span><span class="p">,</span> <span class="n">signalData</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;../data/jingle_bells.wav&quot;</span><span class="p">)</span>
@@ -595,7 +596,7 @@ Total Length in time steps = 156991
 </section>
 <section id="lets-give-the-data-a-look">
 <h2>Let’s Give the Data a Look!<a class="headerlink" href="#lets-give-the-data-a-look" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>It is always good practice to view the data that we have collected. First, let’s organize the data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe to organize the amplitude and time stamps</p>
+<p>It is always good practice to view the data that we have collected. First, let’s organize the data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe to organize the amplitude and time stamps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="n">signalData</span><span class="p">})</span>
@@ -658,7 +659,7 @@ Total Length in time steps = 156991
 </div>
 <section id="plot-a-small-sample-of-the-wav-file">
 <h3>Plot a Small Sample of the .wav File<a class="headerlink" href="#plot-a-small-sample-of-the-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Plot a small subsample of the .wav to visualize the input data</p>
+<p>Plot a small subsample of the .wav to visualize the input data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -679,7 +680,7 @@ Total Length in time steps = 156991
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> is a complex number with a real and an imaginary part (1 + 2i). The power spectrum plots the real component of the complex number. The real component represents the magntiude of the wavelet coefficient displayed as the absolute value of the coefficients squared</p>
+<p><code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> is a complex number with a real and an imaginary part (1 + 2i). The power spectrum plots the real component of the complex number. The real component represents the magnitude of the wavelet coefficient displayed as the absolute value of the coefficients squared.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet_mother</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span> <span class="c1"># morlet mother wavelet</span>
@@ -705,7 +706,7 @@ y-axis be default is: 39
 </div>
 <section id="a-note-on-choosing-the-right-scales">
 <h3>A Note on Choosing the Right Scales<a class="headerlink" href="#a-note-on-choosing-the-right-scales" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">freqs</span></code> is normalized frequencies, so needs to be multiplied by these sampling frequency to turn back into frequencies which means that you need to multiply them by your sampling frequency (500Hz) to turn them into actual frequencies</p>
+<p><code class="docutils literal notranslate"><span class="pre">freqs</span></code> is normalized frequencies, so it needs to be multiplied by this sampling frequency to turn it back into frequencies which means that you need to multiply them by your sampling frequency (500Hz) to turn them into actual frequencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet_mother</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span> <span class="c1"># morlet mother wavelet</span>
@@ -741,7 +742,7 @@ y-axis be default is: 39
   225.69444444  219.59459459  213.81578947  208.33333333]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa66892e2f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5674b8e2f0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" src="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" />
@@ -755,7 +756,7 @@ y-axis be default is: 39
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magntiude</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magnitude</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time Steps&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale Sensitivity&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
@@ -773,7 +774,7 @@ y-axis be default is: 39
 </section>
 <section id="overlay-possible-frequencies">
 <h2>Overlay Possible Frequencies<a class="headerlink" href="#overlay-possible-frequencies" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>To overlay these frequencies with the wavelet scaologram:</p>
+<p>To overlay these frequencies with the wavelet scalogram:</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Important Note</p>
 <p>To convert HZ frequency to a <code>scale = hz *.0001</code> (where 0.01 is 100 Hz sampling) then apply <code>frequency2scale()</code> PyWavelets function</p>
@@ -782,7 +783,7 @@ y-axis be default is: 39
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
-<span class="c1"># Overlay frequency of chords as dotted lines</span>
+<span class="c1"># Overlay frequency of notes as dotted lines</span>
 <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampleRate</span>
 <span class="n">a_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">440</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">a_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightpink&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="c1"># A note: 440 hz</span>
@@ -819,11 +820,11 @@ y-axis be default is: 39
 </section>
 <section id="determining-which-frequencies-to-overlay">
 <h2>Determining Which Frequencies to Overlay<a class="headerlink" href="#determining-which-frequencies-to-overlay" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>For this example, we know that the input data is “Jingle Bells” so known which chords are going to be used</p>
+<p>For this example, we know that the input data is “Jingle Bells” so we know which notes are going to be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
 </pre></div>
 </div>
-<p>However, let’s imagine that we aren’t sure. Wavelets gain information about <em>when</em> a frequency occurs, but at a lower resolution to an exact frequency. To determine which chords are a best fit, you can make use of FFT to determinine which chords to include. Without FFT, the larger possible ranges of frequency can make it possible to confuse nearby chords.</p>
+<p>However, let’s imagine that we aren’t sure. Wavelets gain information about <em>when</em> a frequency occurs, but at a lower resolution to an exact frequency. To determine which notes are a best fit, you can make use of FFT to determinine which notes to include. Without FFT, the larger possible ranges of frequency can make it possible to confuse nearby notes.</p>
 <section id="fast-fourier-transform">
 <h3>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
@@ -857,9 +858,9 @@ y-axis be default is: 39
 </div>
 </section>
 </section>
-<section id="overlay-frequency-of-chords">
-<h2>Overlay Frequency of Chords<a class="headerlink" href="#overlay-frequency-of-chords" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Using FFT we can now say that there are four clear frequencies that are associated with four chords for CDEG</p>
+<section id="overlay-frequency-of-notes">
+<h2>Overlay Frequency of Notes<a class="headerlink" href="#overlay-frequency-of-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Using FFT we can now say that there are four clear frequencies that are associated with four notes for CDEG.</p>
 </section>
 <section id="fast-fourier-transform-predicts-four-notes">
 <h2>Fast Fourier Transform Predicts Four Notes<a class="headerlink" href="#fast-fourier-transform-predicts-four-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -872,7 +873,7 @@ y-axis be default is: 39
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
-<span class="c1"># Overlay frequency of chords as dotted lines</span>
+<span class="c1"># Overlay frequency of notes as dotted lines</span>
 <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampleRate</span>
 <span class="n">c_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">261</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">c_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
@@ -901,9 +902,9 @@ y-axis be default is: 39
 </div>
 </div>
 </section>
-<section id="four-chords">
-<h2>Four Chords!<a class="headerlink" href="#four-chords" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The darkest color correlates with the frequency at each time stamp. Rather than appearing as distinct peaks like Fourier Transform, wavelets return a gradient of frequencies. This is the loss in precision due to Heisenberg’s Uncertainty Principle. While the frequencies can still be determined, there is some level of uncertainty in the exact frequencies. This is where combining wavelets with a Fourier Transform can be useful. We now know that this piece has four notes <code class="docutils literal notranslate"><span class="pre">CDEG</span></code>. The vertical bands represent where the note ends before the next note begins. This piece of music has a deliberate start and stop so this band will not always be as obvious in other pieces of music.</p>
+<section id="four-notes">
+<h2>Four Notes!<a class="headerlink" href="#four-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The darkest color correlates with the frequency at each time stamp. Rather than appearing as distinct peaks like a Fourier Transform, wavelets return a gradient of frequencies. This is the loss in precision due to Heisenberg’s Uncertainty Principle. While the frequencies can still be determined, there is some level of uncertainty in the exact frequencies. This is where combining wavelets with a Fourier Transform can be useful. We now know that this piece has four notes <code class="docutils literal notranslate"><span class="pre">CDEG</span></code>. The vertical bands represent where the note ends before the next note begins. This piece of music has a deliberate start and stop so this band will not always be as obvious in other pieces of music.</p>
 <p>We can read this wavelet analysis by finding what note corresponds with the darkest band.</p>
 <p>We should now have the order of the notes, read from left to right:</p>
 <section id="eee-eee-egcde">
@@ -1014,9 +1015,9 @@ y-axis be default is: 39
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform">Fast Fourier Transform</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-frequency-of-chords">Overlay Frequency of Chords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-frequency-of-notes">Overlay Frequency of Notes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-predicts-four-notes">Fast Fourier Transform Predicts Four Notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#four-chords">Four Chords!</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#four-notes">Four Notes!</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eee-eee-egcde">EEE EEE EGCDE</a></li>
 </ul>
 </li>

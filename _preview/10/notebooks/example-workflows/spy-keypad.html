@@ -422,7 +422,7 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><strong>A door is encoded with a number pad (0-9). We can’t see the door, but through nefariouis means we have a recording of someone opening it. Quick! We need to decode this <a class="reference external" href="https://github.com/ProjectPythia/wavelet-cookbook/blob/main/notebooks/data/mystery_signal.wav">mystery signal</a> and the order they appear to open the door!</strong></p>
+<p><strong>A door is encoded with a number pad (0-9). We can’t see the door, but through nefarious means we have a recording of someone opening it. Quick! We need to decode this <a class="reference external" href="https://github.com/ProjectPythia/wavelet-cookbook/blob/main/notebooks/data/mystery_signal.wav">mystery signal</a> and the order they appear to open the door!</strong></p>
 <p>We know that the door code is set up as:</p>
 <ul class="simple">
 <li><p>A note: 0</p></li>
@@ -485,7 +485,7 @@
 </section>
 <section id="extract-audio-wav-file">
 <h2>Extract audio .wav file<a class="headerlink" href="#extract-audio-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Like when working with the “Jingle Bells” song file, any .wav input file contains information about the amplitude at every point in the file. The frequency of the note will determine which chord each part of the piece represents</p>
+<p>As when working with the “Jingle Bells” song file, any .wav input file contains information about the amplitude at every point in the file. The frequency of the note will determine which chord each part of the piece represents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleRate</span><span class="p">,</span> <span class="n">signalData</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;../data/mystery_signal.wav&#39;</span><span class="p">)</span>
@@ -510,7 +510,7 @@ Total length in time steps = 60000
 </section>
 <section id="lets-give-the-data-a-look">
 <h2>Let’s Give the Data a Look!<a class="headerlink" href="#lets-give-the-data-a-look" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>It is always good practice to view the data that we have collected. First, let’s organize the data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe to organize the amplitude and time stamps</p>
+<p>It is always good practice to view the data that we have collected. First, let’s organize the data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe to organize the amplitude and time stamps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="n">signalData</span><span class="p">})</span>
@@ -573,7 +573,7 @@ Total length in time steps = 60000
 </div>
 <section id="plot-a-small-sample-of-the-wav-file">
 <h3>Plot a Small Sample of the .wav File<a class="headerlink" href="#plot-a-small-sample-of-the-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Plot a small subsample of the .wav to visualize the input data</p>
+<p>Plot a small subsample of the .wav to visualize the input data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -594,7 +594,7 @@ Total length in time steps = 60000
 </section>
 <section id="wavelet-analysis-power-spectrum">
 <h2>Wavelet Analysis: Power Spectrum<a class="headerlink" href="#wavelet-analysis-power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum plots the real component of the complex number returns from wavelet coefficents. This will return information about the frequency and time that we need to use to determine which notes are used in what order for the keypad</p>
+<p>The power spectrum plots the real component of the complex number returns from wavelet coefficents. This will return information about the frequency and time that we need to use to determine which notes are used in what order for the keypad.</p>
 <p>For the purpose of this example, we will use the Morlet mother wavelet. Morlet is one type of mother wavelet useful for working with audio signals and is a good general wavelet to start with when analyzing frequencies of a signal.</p>
 <p>However, choosing which wavelet to use is an important step as different wavelets will be sensitive to different features in time-series data.</p>
 <p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/choose-a-wavelet.html">To learn more!</a></p>
@@ -646,10 +646,10 @@ y-axis is: 39
 </section>
 <section id="behold-distinct-bands-of-frequencies">
 <h2>Behold! Distinct Bands of Frequencies!<a class="headerlink" href="#behold-distinct-bands-of-frequencies" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Each distinct band represents a note. So, we can see that the data at the beginning at the end is random noise, with no distinct frequency. But at 1 second, a distinct note that lasts for 1 second, followed by three additional distinct bands. We now know the code is four numbers long. But now we need to determine what the numbers are and what their order is. Let’s see where the possible note frequencies we have by overlaying the frequencies of each note onto the wavelet scalogram.</p>
+<p>Each distinct band represents a note. So, we can see that the data at the beginning and at the end is random noise, with no distinct frequency. But at 1 second, a distinct note that lasts for 1 second, followed by three additional distinct bands. We now know the code is four numbers long. But now we need to determine what the numbers are and what their order is. Let’s see where the possible note frequencies we have by overlaying the frequencies of each note onto the wavelet scalogram.</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Important Note</p>
-<p>To convert HZ frequency to a <code>scale = hz *.0001</code> (where 0.01 is 100 Hz sampling) then apply <code>frequency2scale</code> PyWavelets function</p>
+<p>To convert Hz frequency to a <code>scale = hz *.0001</code> (where 0.01 is 100 Hz sampling) then apply <code>frequency2scale</code> PyWavelets function</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -660,9 +660,9 @@ y-axis is: 39
 <span class="n">a_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">440</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">a_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightpink&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="c1"># A note: 440 hz</span>
 <span class="n">b_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">494</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">b_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># B Note: 494 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">b_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>      <span class="c1"># B Note: 494 hz</span>
 <span class="n">c_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">261</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">c_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">c_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span> <span class="c1"># C Note: 261 hz</span>
 <span class="n">d_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">293</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">d_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>     <span class="c1"># D Note: 293 hz</span>
 <span class="n">e_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">330</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
@@ -693,7 +693,7 @@ y-axis is: 39
 <section id="but-which-match-best">
 <h2>But Which Match Best?<a class="headerlink" href="#but-which-match-best" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>We are looking for a note frequency that best lines up with the darkest part of each band. The first and the last band seem like the same note, but is it closer to an A note or a B note?</p>
-<p>Let’s see if we can use Fourier Transform to get a smaller range of notes to chose from</p>
+<p>Let’s see if we can use Fourier Transform to get a smaller range of notes to chose from.</p>
 </section>
 <section id="fast-fourier-transform">
 <h2>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -711,8 +711,8 @@ y-axis is: 39
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">fourier_transform</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightpink&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># A note: 440 hz</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">494</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># B Note: 494 hz</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">261</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">494</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># B Note: 494 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">261</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># C Note: 261 hz</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">293</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>     <span class="c1"># D Note: 293 hz</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>    <span class="c1"># E Note: 330 hz</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># F Note: 350 hz</span>
@@ -732,7 +732,7 @@ y-axis is: 39
 </section>
 <section id="perfect-there-are-three-notes">
 <h2>Perfect, There are Three Notes!<a class="headerlink" href="#perfect-there-are-three-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Three notes stand out, and one note is used about twice as much as the other two: A, B, F</p>
+<p>Three notes stand out, and one note is used about twice as much as the other two: A, B, F.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -747,7 +747,7 @@ y-axis is: 39
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">f_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot Power scalogram</span>
-<span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magntiude</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magnitude</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Note Frequency as Scale&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time Steps&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale Sensitivity&quot;</span><span class="p">)</span>
@@ -766,7 +766,7 @@ y-axis is: 39
 </section>
 <section id="three-notes-played-over-six-seconds">
 <h2>Three Notes Played Over Six Seconds<a class="headerlink" href="#three-notes-played-over-six-seconds" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>We have the keypad solution! The three notes are played (sometimes repeated) over the course of the six seconds</p>
+<p>We have the keypad solution! The three notes are played (sometimes repeated) over the course of the six seconds.</p>
 <section id="a-b-f-a">
 <h3>A, B, F, A<a class="headerlink" href="#a-b-f-a" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>From our original problem, we know that the door code is set up as:</p>
