@@ -9,7 +9,7 @@
 This Project Pythia Cookbook covers how to work with wavelets in Python
 
 ## Motivation
-Wavelets are a powerful tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time/frequency limitations of Fourier Transforms
+Wavelets are a powerful tool to analyze time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time/frequency limitations of Fourier Transforms
 
 ## Authors
 
