@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="19 December 2024"/>
+    <meta name="docbuild:last-update" content="23 December 2024"/>
   </head>
   
   
@@ -494,7 +494,7 @@
 </section>
 <section id="pywavelets-overview">
 <h2>PyWavelets Overview<a class="headerlink" href="#pywavelets-overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>PyWavelets returns both the coefficents and freqeuncy information for wavelets from the input data</p>
+<p>PyWavelets returns both the coefficents and frequency information for wavelets from the input data</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coeffs</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -558,7 +558,7 @@
 </tbody>
 </table>
 </div>
-<p>It is good practice to include a range greater than precisely needed. This will make the bands for each frequeny in the wavelets clearer.</p>
+<p>It is good practice to include a range greater than precisely needed. This will make the bands for each frequency in the wavelets clearer.</p>
 <p>For example, scales from 1 to 40 represent a frequency range from 8125 - 208.33 Hz</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">signal_data</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;jingle_bells.wav&#39;</span><span class="p">)</span>
 <span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
@@ -679,7 +679,7 @@ Total Length in time steps = 156991
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> is a complex number with a real and an imaginary number (1 + 2i). The power spectrum plots the real component of the complex number. The real component represents the magntiude of the wavelet coefficient displayed as the absolute value of the coefficients squared</p>
+<p><code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> is a complex number with a real and an imaginary part (1 + 2i). The power spectrum plots the real component of the complex number. The real component represents the magntiude of the wavelet coefficient displayed as the absolute value of the coefficients squared</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet_mother</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span> <span class="c1"># morlet mother wavelet</span>
@@ -741,7 +741,7 @@ y-axis be default is: 39
   225.69444444  219.59459459  213.81578947  208.33333333]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb201a02320&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa66892e2f0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" src="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" />
@@ -751,6 +751,7 @@ y-axis be default is: 39
 </section>
 <section id="plot-scalogram">
 <h2>Plot scalogram<a class="headerlink" href="#plot-scalogram" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The scalogram will visually display the strength of the frequency at a particular time interval. A stronger signal in red represents a wavelet that strongly matches a specific frequency in that range, while blue represents where the wavelet has a weaker match to a specific frequency. The best match for a note will be found where the signal is strongest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -822,7 +823,7 @@ y-axis be default is: 39
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
 </pre></div>
 </div>
-<p>However, let’s imagine that we aren’t sure. Wavelets gain information about <em>when</em> a frequency occurs, but at a lower resolution to an exact frequnecy. To determine which chords are a best fit, you can make use of FFT to determinine which chords to include. Without FFT, the larger possible ranges of frequency can make it possible to confuse nearby chords.</p>
+<p>However, let’s imagine that we aren’t sure. Wavelets gain information about <em>when</em> a frequency occurs, but at a lower resolution to an exact frequency. To determine which chords are a best fit, you can make use of FFT to determinine which chords to include. Without FFT, the larger possible ranges of frequency can make it possible to confuse nearby chords.</p>
 <section id="fast-fourier-transform">
 <h3>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
@@ -1257,7 +1258,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 19 December 2024.
+  Last updated on 23 December 2024.
   <br/>
 </p>
   </div>
@@ -1311,7 +1312,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 19 December 2024.
+          Last updated on 23 December 2024.
         </p>
       </div>
     </div>

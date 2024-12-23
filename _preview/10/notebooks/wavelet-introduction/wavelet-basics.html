@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="19 December 2024"/>
+    <meta name="docbuild:last-update" content="23 December 2024"/>
   </head>
   
   
@@ -466,7 +466,7 @@
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Time-series data refers to data recorded in successive time intervals. For example, imagine a short piece of music. Each note in the piece can be any note from A to G and varies based on frequency to produce different pitches. A higher frequency is associated with a higher pitch, like an A note, while a lower frequency is associated with a lower pitch, like a C note.</p>
-<p>Fourier Transform is a common tool to analysis and pull out which frequencies are present in a signal. With tools like Fourier Transform, we can easily distinguish and determine if a B and a D note appear in the piece of music. However, this does not encapulsate all the information from a signal.</p>
+<p>Fourier Transform is a common tool to analyze and pull out which frequencies are present in a signal. With tools like Fourier Transform, we can easily distinguish and determine if a B and a D note appear in the piece of music. However, this does not encapulsate all the information from a signal.</p>
 <p><strong>Most importantly, what is the order?</strong></p>
 <p>The musical piece “BDDB” is very different from “DDDDBD” while they both share the same notes B and D. The time and order of data is lost when relying only on signal processing tools like Fourier Transform. Wavelets offer a powerful opportunity for signal analysis to return both information about the frequency and information about the time when the frequency occurred.</p>
 </section>
@@ -754,7 +754,7 @@ Duration = 15.6991 seconds
 <div><p>Many signals and images of interest exhibit piecewise smooth behavior punctuated by transients. Speech signals are characterized by short bursts encoding consonants followed by steady-state oscillations indicative of vowels. Natural images have edges. Financial time series exhibit transient behavior, which characterize rapid upturns and downturns in economic conditions. Unlike the Fourier basis, wavelet bases are adept at sparsely representing piecewise regular signals and images, which include transient behavior.</p>
 <p><a class="reference internal" href="#(https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html)"><span class="xref myst">Mathworks: “What is a Wavelet”</span></a></p>
 </div></blockquote>
-<p>Fourier transforms are made up of multiple sine waves of different and various frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analysis works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is match by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
+<p>Fourier transforms are made up of multiple sine waves of different phase and frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analyze works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is match by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
 </section>
 </section>
 <section id="wavelet-terminology">
@@ -823,7 +823,7 @@ Duration = 15.6991 seconds
 </section>
 <section id="daughter-wavelet">
 <h3>Daughter Wavelet<a class="headerlink" href="#daughter-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>A mother wavelet represents the basic wavelet shape that is transformed into varied scaled copies known as daughter wavelets. The daughter wavelets are shifted along the entire signal to match possible frequencies over a finite period of time.</p>
+<p>A mother wavelet represents the basic wavelet shape that is transformed into varied scaled copies known as daughter wavelets. The daughter wavelets are shifted and scaled along the entire signal to match possible frequencies over a finite period of time.</p>
 </section>
 <section id="sampling-period">
 <h3>Sampling Period<a class="headerlink" href="#sampling-period" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -852,8 +852,8 @@ Duration = 15.6991 seconds
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Wavelets are a powerful tool for processing time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Wavelets are an answer to this limitation in Fourier Transform. However, due to Heisenberg’s Uncertainty Principle, it is impossible to totally know both the exact frequency and the exact time that the frequency occurs in a signal. Fourier Transform can return highly precise information about the frequencies in a signal and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
-<p>We will see how this precision varies, but as a result it can be useful to not entirely abandon Fourier Transform. Wavelets and Fourier Transform can both be used to analysis data, by utilizing their strengths and offsetting eachothers weaknesses.</p>
+<p>Wavelets are a powerful tool for processing time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Wavelets are an answer to this limitation in Fourier Transform. However, due to Heisenberg’s Uncertainty Principle, it is impossible to exactly know both the exact frequency and the exact time that the frequency occurs in a signal. Fourier Transform can return highly precise information about the frequencies in a signal and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
+<p>We will see how this precision varies, but as a result it can be useful to not entirely abandon Fourier Transform. Wavelets and Fourier Transform can both be used to analyze data, by utilizing their strengths and offsetting each others weaknesses.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p><strong>Up next: apply wavelet transforms to determine the order of frequency signals for music and weather analysis!</strong></p>
@@ -1209,7 +1209,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 19 December 2024.
+  Last updated on 23 December 2024.
   <br/>
 </p>
   </div>
@@ -1263,7 +1263,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 19 December 2024.
+          Last updated on 23 December 2024.
         </p>
       </div>
     </div>
