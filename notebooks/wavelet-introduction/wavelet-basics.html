@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -37,10 +39,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -79,7 +82,8 @@
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="20 September 2024"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="23 December 2024"/>
   </head>
   
   
@@ -118,7 +122,7 @@
     
     
     <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
-    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark pst-js-only" alt="Project Pythia Cookbook Template - Home"/>
   
   
 </a></div>
@@ -345,7 +349,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -385,9 +388,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
         </div>
@@ -416,7 +424,7 @@
 <ol class="arabic simple">
 <li><p>Prerequistites</p></li>
 <li><p>Background</p></li>
-<li><p>Load Wav File for Audio</p></li>
+<li><p>Load .wav File for Audio</p></li>
 <li><p>Fourier Transform - Frequency, but not Time</p></li>
 <li><p>Wavelet Transform - Frequency and Time</p></li>
 <li><p>Wavelet Terminology</p></li>
@@ -434,19 +442,19 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Intro to Matplotlib</a></p></td>
 <td><p>Necessary</p></td>
-<td><p>Plotting on a data</p></td>
+<td><p>Used to plot data</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/pandas/pandas.html">Intro to Pandas</a></p></td>
 <td><p>Necessary</p></td>
-<td><p>Familiarity with working with dataframes</p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy/numpy-basics.html">Intro to Numpy</a></p></td>
 <td><p>Necessary</p></td>
-<td><p>Familiarity with working with arrays</p></td>
+<td><p>Used to work with large arrays</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy-1.13.1/tutorial/fft.html">Intro to SciPy</a></p></td>
 <td><p>Helpful</p></td>
-<td><p>Familiarity with working with wave files and FFT</p></td>
+<td><p>Used to work with .wav files and built-in Fast Fourier Transform</p></td>
 </tr>
 </tbody>
 </table>
@@ -457,8 +465,10 @@
 </section>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Time-series data refers to data recorded in successive time intervals. For example, imagine a short piece of music. Each note in the piece can be any note from A to G and each note varies based on frequency to produce different notes. A higher frequency is associated with a higher pitch, like an A note, while a lower frequency is associated with a lower pitch, like a C note.</p>
-<p>With tools like Fourier Transform, it will be obvious when a B and a D note appears in the piece of music. However, this does not encapulsate all the information. What is the order? BDDB is very different from DDDDBD. This is the importance of time and order in data that is lost in first passes of signal processing with tools like Fourier Transform. Wavelets offer a powerful alternative for signal analysis which can be used to return both information about the frequency and information about the time when the frequency occurred.</p>
+<p>Time-series data refers to data recorded in successive time intervals. For example, imagine a short piece of music. Each note in the piece can be any note from A to G and varies based on frequency to produce different pitches. A higher frequency is associated with a higher pitch, like an A note, while a lower frequency is associated with a lower pitch, like a C note.</p>
+<p>Fourier Transform is a common tool to analyze and pull out which frequencies are present in a signal. With tools like Fourier Transform, we can easily distinguish and determine if a B and a D note appear in the piece of music. However, this does not encapulsate all the information from a signal.</p>
+<p><strong>Most importantly, what is the order?</strong></p>
+<p>The musical piece “BDDB” is very different from “DDDDBD” while they both share the same notes B and D. The time and order of data is lost when relying only on signal processing tools like Fourier Transform. Wavelets offer a powerful opportunity for signal analysis to return both information about the frequency and information about the time when the frequency occurred.</p>
 </section>
 <hr class="docutils" />
 <section id="imports">
@@ -468,7 +478,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pywt</span>                                 <span class="c1"># PyWavelets</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                          <span class="c1"># working with arrays</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                         <span class="c1"># working with dataframes</span>
-<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">wavfile</span>                <span class="c1"># loading in wav files</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">wavfile</span>                <span class="c1"># loading in .wav files</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>             <span class="c1"># plot data (fourier transform and wav files)</span>
 <span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>      <span class="c1"># working with Fourier Transforms</span>
 </pre></div>
@@ -478,9 +488,14 @@
 </section>
 <hr class="docutils" />
 <section id="load-wav-file-for-audio">
-<h2>Load Wav File for Audio<a class="headerlink" href="#load-wav-file-for-audio" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="load-wav-file-data">
-<h3>Load .wav file data<a class="headerlink" href="#load-wav-file-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<h2>Load .wav File for Audio<a class="headerlink" href="#load-wav-file-for-audio" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>For this example, we will be using a short .wav file (<a class="reference external" href="https://github.com/ProjectPythia/wavelet-cookbook/blob/main/notebooks/data/jingle_bells.wav">jingle_bells.wav</a>) that contains the first few notes of “Jingle Bells”.</p>
+<p>Jingle Bells is a simple musical piece that is taught to beginners and children since it can be entirely played with one hand on the piano. For the purpose of this example, we will be analyzing the first three lines of “Jingle Bells”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
+</pre></div>
+</div>
+<p>We can load in the <code class="docutils literal notranslate"><span class="pre">jingle_bell.wav</span></code> file with the <code class="docutils literal notranslate"><span class="pre">scipy.io.wavfile()</span></code> function. This <code class="docutils literal notranslate"><span class="pre">scipy</span></code> function will return both the sample rate of the data and the frequency of the data.</p>
+<p>The length of the .wav file can be determined as a ratio of the length of the file and the sample rate to determine the duration in seconds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">signal_data</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;../data/jingle_bells.wav&#39;</span><span class="p">)</span>
@@ -495,22 +510,20 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample Rate: </span><span class="si">{</span><span class="n">sample_rate</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;duration = </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds (where duration is the ratio of sample rate and data = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">signal_data</span><span class="p">)</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">sample_rate</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;length of audio file = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">signal_data</span><span class="p">)</span><span class="si">}</span><span class="s2"> time steps&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration = </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample Rate: 10000
-duration = 15.6991 seconds (where duration is the ratio of sample rate and data = 156991 / 10000)
-length of audio file = 156991 time steps
+Duration = 15.6991 seconds
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 <section id="convert-wav-file-to-pandas-dataframe">
 <h3>Convert .wav file to pandas dataframe<a class="headerlink" href="#convert-wav-file-to-pandas-dataframe" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Currently, the <code class="docutils literal notranslate"><span class="pre">signal_data</span></code> is stored as a numpy array, but to make it easy to plot, we will store the .wav file as a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe. This will also associate the specific time (in seconds) with the <code class="docutils literal notranslate"><span class="pre">signal_data</span></code> amplitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="n">signal_data</span><span class="p">})</span>
@@ -574,7 +587,7 @@ length of audio file = 156991 time steps
 </section>
 <section id="plot-a-small-sample-of-the-wav-file">
 <h3>Plot a Small Sample of the .wav File<a class="headerlink" href="#plot-a-small-sample-of-the-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Plot the first 400 time steps</p>
+<p>With the data stored as a dataframe, it will be simple to plot and view in <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. We can view the first 400 data points (0.04 seconds) as a simple line graph to view the rapidly changing amplitudes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -588,7 +601,7 @@ length of audio file = 156991 time steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/def84570515a118bf9289ef29a0793ed792ee3827770b4f78d17ed658f8e7f88.png" src="../../_images/def84570515a118bf9289ef29a0793ed792ee3827770b4f78d17ed658f8e7f88.png" />
+<img alt="../../_images/03e20e3e4052b243a29d0e503299e4911e02bd1e8c32f71995f539eebc4898e3.png" src="../../_images/03e20e3e4052b243a29d0e503299e4911e02bd1e8c32f71995f539eebc4898e3.png" />
 </div>
 </div>
 </section>
@@ -597,14 +610,17 @@ length of audio file = 156991 time steps
 <h2>Fourier Transform - Frequency, but not Time<a class="headerlink" href="#fourier-transform-frequency-but-not-time" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="advantages-and-disadvantages-of-fourier-transform">
 <h3>Advantages (and Disadvantages) of Fourier Transform<a class="headerlink" href="#advantages-and-disadvantages-of-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>The first step of processing new data includes developing a basic understanding of the kinds of frequencies that are present. Are there prevailing patterns? Is one frequency more dominant? How much of the dominant frequencies overcome background noise?</p>
-<p>Fourier Transform is a tool that can be used to pull out frequencies from raw data. For a musical example, a Fourier Transform will return the frequencies of all the notes that are present. Jingle Bells is a simple muiscal piece that is taught to beginners and children since it can be entirely played with one hand:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
-</pre></div>
-</div>
+<p>The first step of processing new signal data is to develop a basic understanding of the kinds of frequencies that are present. This will help us to answer some important questions:</p>
+<ul class="simple">
+<li><p>Are there prevailing patterns?</p></li>
+<li><p>Is one frequency more dominant?</p></li>
+<li><p>How much do the dominant frequencies overcome background noise?</p></li>
+</ul>
+<p>Fourier Transform is a common tool that can be used to determine which frequencies are present from raw data. For this “Jingle Bells” musical example, a Fourier Transform will return the frequencies of all the notes that are present.</p>
 </section>
 <section id="fast-fourier-transform-of-signal-data">
 <h3>Fast Fourier Transform of Signal Data<a class="headerlink" href="#fast-fourier-transform-of-signal-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>To find determine what notes are present, we can first apply Fast Fourier Transform to the .wav file data with the <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fft()</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.fftfreq()</span></code> functions in <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. These will both return <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays with information about which frequencies are present in the .wav file as well as how frequently they appear.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply FFT to Input Data</span>
@@ -617,24 +633,25 @@ length of audio file = 156991 time steps
 </section>
 <section id="plot-frequency-prevalence-from-fast-fourier-transform">
 <h3>Plot Frequency Prevalence from Fast Fourier Transform<a class="headerlink" href="#plot-frequency-prevalence-from-fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>To begin, we can plot the Fourier Transform with relation to how frequently a frequency appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">fourier_transform</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Frequency Prevalence (FFT)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d9cb7439ce68b39afb0087d20dd0a65f4bb769896a37dd31c19eebd2194833e1.png" src="../../_images/d9cb7439ce68b39afb0087d20dd0a65f4bb769896a37dd31c19eebd2194833e1.png" />
+<img alt="../../_images/6a57467ef29da9c3ffd87e9a8c4f42c212070c4efdab24aeeb11d49d7062c8af.png" src="../../_images/6a57467ef29da9c3ffd87e9a8c4f42c212070c4efdab24aeeb11d49d7062c8af.png" />
 </div>
 </div>
 </section>
 <section id="only-plot-positive-frequencies-hz-in-range-of-notes-200-500">
 <h3>Only plot positive Frequencies (hz) in range of notes (200-500)<a class="headerlink" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>You might have noticed that the frequencies are mirrored across the 0 Hz, so for simplicity’s sake, we can zoom in and only pay attention to the relevant range of frequencies. For this example, we will pay attention to the positive frequencies between the range frequencies of 200 to 500 Hz where the frequencies for A to G are found.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -642,18 +659,18 @@ length of audio file = 156991 time steps
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Frequency Prevalence (FFT)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/508f50e870188e52afe447ac75fc39332844ff3bf051268aeaf7abbb53cf491a.png" src="../../_images/508f50e870188e52afe447ac75fc39332844ff3bf051268aeaf7abbb53cf491a.png" />
+<img alt="../../_images/a457495c5b5e0d06a014315efe0101a8bd994f17988c5b10bf657febf92ebf0a.png" src="../../_images/a457495c5b5e0d06a014315efe0101a8bd994f17988c5b10bf657febf92ebf0a.png" />
 </div>
 </div>
 </section>
-<section id="plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes">
-<h3>Plot Fast Fourier Transform for Frequency Prevalence with Frequency of Notes<a class="headerlink" href="#plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="plot-fast-fourier-transform">
+<h3>Plot Fast Fourier Transform<a class="headerlink" href="#plot-fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>We can already start to see the peaks in our data that represent the frequencies in the signal data. There are four apparent peaks, but what notes do they represent?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note frequency in hz</span>
@@ -668,6 +685,7 @@ length of audio file = 156991 time steps
 </div>
 </div>
 </div>
+<p>Let us overlay the possible frequencies (A to G) on the plot to visually see which frequencies are present.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -682,19 +700,19 @@ length of audio file = 156991 time steps
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">g_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>    <span class="c1"># G Note: 392 hz</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Frequency Prevalence (FFT)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aa1e1e8a2b6670e74679f9f92dfcb3cd100f79d715413c0d67f27fff1c8b081a.png" src="../../_images/aa1e1e8a2b6670e74679f9f92dfcb3cd100f79d715413c0d67f27fff1c8b081a.png" />
+<img alt="../../_images/c92f5fb1df652f39f40e9058f35982edb5f306a0d45f2a9a71b182dfdf532e98.png" src="../../_images/c92f5fb1df652f39f40e9058f35982edb5f306a0d45f2a9a71b182dfdf532e98.png" />
 </div>
 </div>
 </section>
 <section id="fast-fourier-transform-predicts-four-notes">
 <h3>Fast Fourier Transform Predicts Four Notes<a class="headerlink" href="#fast-fourier-transform-predicts-four-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>The overlays are working! We can see that the four notes that we predicted from Jingle Bells (C, D, E, and G) are present.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -706,14 +724,13 @@ length of audio file = 156991 time steps
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">g_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># G Note: 391 hz</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Frequency Prevalence (FFT)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/88cabe3a2a56240803dee2c79f641da8a047315252205ce5ef41ecc186d3c572.png" src="../../_images/88cabe3a2a56240803dee2c79f641da8a047315252205ce5ef41ecc186d3c572.png" />
+<img alt="../../_images/2cff59c68a0b68bbdcf754f073c611eb0d60215fad8b861d105ca11aa78f705a.png" src="../../_images/2cff59c68a0b68bbdcf754f073c611eb0d60215fad8b861d105ca11aa78f705a.png" />
 </div>
 </div>
 </section>
@@ -729,15 +746,15 @@ length of audio file = 156991 time steps
 <h2>Wavelet Transform - Frequency and Time<a class="headerlink" href="#wavelet-transform-frequency-and-time" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="what-is-a-wavelet">
 <h3>What is a Wavelet?<a class="headerlink" href="#what-is-a-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>A wavelet is a short wave-like oscillation that averages out to zero.</p>
+<p>In its simplest form, a wavelet is a short wave-like oscillation that averages out to zero.</p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MorletWaveletMathematica.svg/1024px-MorletWaveletMathematica.svg.png" alt="Morlet Wavelet on Wikipedia" width=350/>
 </p>
 <blockquote>
 <div><p>Many signals and images of interest exhibit piecewise smooth behavior punctuated by transients. Speech signals are characterized by short bursts encoding consonants followed by steady-state oscillations indicative of vowels. Natural images have edges. Financial time series exhibit transient behavior, which characterize rapid upturns and downturns in economic conditions. Unlike the Fourier basis, wavelet bases are adept at sparsely representing piecewise regular signals and images, which include transient behavior.</p>
-<p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html">Mathworks</a>: “What is a Wavelet”</p>
+<p><a class="reference internal" href="#(https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html)"><span class="xref myst">Mathworks: “What is a Wavelet”</span></a></p>
 </div></blockquote>
-<p>Fourier transforms is made up of sine waves of different and various frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about when each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. A wavelet scales (expanded or shrunk) different shaped wavelets and is shifted along the signal. The scaled wavelet is shifted along the signal, which allows for a signal’s frequency at each time step to be determined.</p>
+<p>Fourier transforms are made up of multiple sine waves of different phases and frequencies to best match a signal. However, while Fourier transforms can be used to match frequency, information about <strong>when</strong> each frequency occurs in the signal is lost. This can be overcome with wavelet analysis. Like Fourier transforms, wavelet analysis works with multiple different wavelets that will be scaled up or down to produce different shaped wavelets that can shifted along the signal. Because the signal is matched by different scaled wavelets at different points along the signal, both the signal’s frequency and the time at which the signal’s frequency occurs can be determined.</p>
 </section>
 </section>
 <section id="wavelet-terminology">
@@ -745,9 +762,13 @@ length of audio file = 156991 time steps
 </section>
 <section id="wavelet-inputs">
 <h2>Wavelet Inputs<a class="headerlink" href="#wavelet-inputs" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Functions for wavelet analysis accept additional parameters as well as the time-series signal data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wavelet</span> <span class="n">name</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">jtot</span><span class="p">)</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>x: Input time-series data (for example: musical note frequency over time)</p></li>
-<li><p>wavelet: name of the mother wavelet</p></li>
+<li><p>wavelet name: name of the mother wavelet</p></li>
 <li><p>dt: sampling period/rate (time between each y-value)</p></li>
 <li><p>s0: smallest scale</p></li>
 <li><p>dj: spacing between each scale</p></li>
@@ -755,16 +776,17 @@ length of audio file = 156991 time steps
 </ul>
 <section id="time-series-data">
 <h3>Time-Series Data<a class="headerlink" href="#time-series-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Time-series data is data recorded over known intervals of time. For example, time-series data for weather might track temperature every hour or every month or the amplitude of a signal in a musical piece.</p>
+<p>Time-series data is data recorded over known intervals of time. For example, time-series data for weather might track temperature every hour or the time for each recorded amplitude in a musical piece.</p>
 </section>
 <section id="mother-wavelet">
 <h3>Mother Wavelet<a class="headerlink" href="#mother-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Wavelets are a powerful tool for signal and time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Due to Heisenberg’s Uncertainty Principle, it is impossible to know both the exact frequency and the exact time that the frequency occurs in a signal. Wavelet transform provide a solution for returning both the frequency and time by reducing the precision of the frequency.</p>
-<p>While a Fourier Transform uses various sine waves to match possible frequencies in a signal, a wavelet is a short wave of with various shapes to match possible frequencies and frequency ranges. A wavelet is a small wave over a finite length of time. There are many possible wavelet forms to use. Each type of wavelet is sensitive to a range of possible signals.</p>
-<p>If a wavelet is made to match the the frequency of an A note for the duration of a second, then it would be possible to match any A notes present in the musical notes that last at least one second.</p>
+<p>While a Fourier Transform uses various sine waves to match possible frequencies in a signal, a wavelet is a short wave of various shapes to match possible frequencies and frequency ranges. A wavelet is a small wave over a finite length of time. There are many possible wavelet forms to use, known as Mother Wavelets. Each type of Mother Wavelet is sensitive to a range of possible signals.</p>
 <p>There are a lot of different kind of wavelets to choose from!</p>
 <section id="examples-of-possible-mother-wavelets-from-pywavelets">
 <h4>Examples of Possible Mother Wavelets from <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html">PyWavelets</a><a class="headerlink" href="#examples-of-possible-mother-wavelets-from-pywavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<p>Below we can view all the possible mother wavelets present in <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code>. There are many different types that are sensitive to different types of frequencies from different types of signals. Most wavelets have a real and imaginary component, which will be used to generate a power and phase spectrum graph from signal data.</p>
+<p>Below are the wavelets available from <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code>. As you will notice, most continuous wavelets (CWT) have a real and imaginary component. Typically, only the real component of a wavelet is graphed, but both components include potentially useful information.</p>
+<p>Different mother wavelets are useful to analyzing data for different features. Morlet is a common wavelet for analyzing the frequencies in data, while Paul is useful to analyze how a signal changes over time and DOG can be used to find discontinuities in data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavlist</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;continuous&quot;</span><span class="p">)</span>
@@ -787,41 +809,38 @@ length of audio file = 156991 time steps
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Available wavelets for CWT&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Available wavelets for CWT in PyWavelets&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2672a246def3bab5add933241caf5c6e6eed30e773073a776513956bdfb8c5f3.png" src="../../_images/2672a246def3bab5add933241caf5c6e6eed30e773073a776513956bdfb8c5f3.png" />
+<img alt="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" src="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="daughter-wavelet">
 <h3>Daughter Wavelet<a class="headerlink" href="#daughter-wavelet" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>A mother wavelet represents the basic wavelet shape that is transformed into varied scaled copies known as daughter wavelets. The daughter wavelets are shifted along the entire signal to match possible frequencies over a finite period of time.</p>
+<p>A mother wavelet represents the basic wavelet shape that is transformed into varied scaled copies known as daughter wavelets. The daughter wavelets are shifted and scaled along the entire signal to match possible frequencies over a finite period of time.</p>
 </section>
 <section id="sampling-period">
 <h3>Sampling Period<a class="headerlink" href="#sampling-period" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>The sampling period (matching the sample rate in audio) is hertz when measuring in seconds.</p>
+<p>The sampling period of the wavelet matches the sample rate of the audio. This can also be known as the time duration that will be used to determine how wavelets will be matched along the signal data.</p>
 </section>
 <section id="scales">
 <h3>Scales<a class="headerlink" href="#scales" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Wavelet matches various frequencies by stretching and shrinking the mother wavelet based on a range of possible scales.</p>
+<p>Wavelets matche various frequencies by stretching and shrinking the mother wavelet based on a range of possible scales.</p>
 <ul class="simple">
-<li><p>Stretched Wavelet: A large wavelet will capture large features, low frequencies, slow S frequencies</p></li>
-<li><p>Shrunk Wavelet: A small wavelet will capture small features and high frequencies, sudden changing frequencies</p></li>
+<li><p>Stretched Wavelet: A large wavelet will capture large features, low frequencies, slow frequencies</p></li>
+<li><p>Shrunk Wavelet: A small wavelet will capture small features and high frequencies, as well as sudden changing frequencies</p></li>
 </ul>
 </section>
 <section id="continuous-wavelet-transform-cwt-vs-discrete-wavelet-transform-dwt">
 <h3>Continuous Wavelet Transform (CWT) vs. Discrete Wavelet Transform (DWT)<a class="headerlink" href="#continuous-wavelet-transform-cwt-vs-discrete-wavelet-transform-dwt" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>There are two classes of wavelets: continuous and discrete wavelet transforms.</p>
-<p>The continuous wavelet transform (CWT) are useful when working with time-frequency data and working with changing frequencies. From <a class="reference external" href="https://www.mathworks.com/discovery/wavelet-transforms.html">MathWorks</a>:</p>
-<blockquote>
-<div><p>Analyzing a hyperbolic chirp signal (left) with two components that vary over time in MATLAB. The short-time Fourier transform (center) does not clearly distinguish the instantaneous frequencies, but the continuous wavelet transform (right) accurately captures them</p>
-</div></blockquote>
+<p>Continuous wavelet transform (CWT) are useful when working with time-frequency data and working with changing frequencies.</p>
 <p align="center">
   <img src="https://www.mathworks.com/discovery/wavelet-transforms/_jcr_content/mainParsys/image.adapt.full.medium.jpg/1718282330785.jpg" alt="MathWorks CWT example" />
 </p>
@@ -833,7 +852,8 @@ length of audio file = 156991 time steps
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Time series data records a signal over a set interval of time sequences, like the amplitude of a note every 1/10th of a second for music or the temperature every month for weather. Fourier Transform can return the frequency of a signal, but without information about the time when the frequency occurs. Due to Heisenberg’s Uncertainty Principle, it is impossible to know both the exact frequency and the exact time that the frequency occurs. Wavelet transform, unlike Fourier Transform, provide a solution for returning both the frequency and time. Fourier Transform can return highly precise information about the frequencies in a signal, and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
+<p>Wavelets are a powerful tool for processing time-series data. While Fourier Transforms are a common method of signal analysis, they only return the information about the frequency of the signal and not when the frequencies occur or their duration. Wavelets are an answer to this limitation in Fourier Transform. However, due to Heisenberg’s Uncertainty Principle, it is impossible to exactly know both the exact frequency and the exact time that the frequency occurs in a signal. Fourier Transform can return highly precise information about the frequencies in a signal and the wavelet transform can return both the frequency and time, but by reducing the precision of the frequency.</p>
+<p>We will see how this precision varies, but as a result it can be useful to not entirely abandon Fourier Transform. Wavelets and Fourier Transform can both be used to analyze data, by utilizing their strengths and offsetting each others weaknesses.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p><strong>Up next: apply wavelet transforms to determine the order of frequency signals for music and weather analysis!</strong></p>
@@ -917,8 +937,7 @@ length of audio file = 156991 time steps
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-for-audio">Load Wav File for Audio</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-data">Load .wav file data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wav-file-for-audio">Load .wav File for Audio</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-wav-file-to-pandas-dataframe">Convert .wav file to pandas dataframe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-small-sample-of-the-wav-file">Plot a Small Sample of the .wav File</a></li>
 </ul>
@@ -928,7 +947,7 @@ length of audio file = 156991 time steps
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-of-signal-data">Fast Fourier Transform of Signal Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-frequency-prevalence-from-fast-fourier-transform">Plot Frequency Prevalence from Fast Fourier Transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#only-plot-positive-frequencies-hz-in-range-of-notes-200-500">Only plot positive Frequencies (hz) in range of notes (200-500)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fast-fourier-transform-for-frequency-prevalence-with-frequency-of-notes">Plot Fast Fourier Transform for Frequency Prevalence with Frequency of Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fast-fourier-transform">Plot Fast Fourier Transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-predicts-four-notes">Fast Fourier Transform Predicts Four Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-what">Now What?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-to-determine-both-frequency-and-time-youll-need-a-different-tool-wavelets">But to determine <strong>both</strong> frequency <strong>and</strong> time, you’ll need a different tool: <strong>wavelets!</strong></a></li>
@@ -995,7 +1014,7 @@ length of audio file = 156991 time steps
       
       
       
-      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?urlpath=lab/tree/notebooks/wavelet-introduction/wavelet-basics.ipynb" target="_blank"
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/wavelet-introduction/wavelet-basics.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1026,7 +1045,7 @@ length of audio file = 156991 time steps
       
       
       
-      <li><a href="https://github.com/ProjectPythia/cookbook-template" target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1043,7 +1062,7 @@ length of audio file = 156991 time steps
       
       
       
-      <li><a href="https://github.com/ProjectPythia/cookbook-template/edit/main/notebooks/wavelet-introduction/wavelet-basics.ipynb" target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/wavelet-introduction/wavelet-basics.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1060,7 +1079,7 @@ length of audio file = 156991 time steps
       
       
       
-      <li><a href="https://github.com/ProjectPythia/cookbook-template/issues/new?title=Issue%20on%20page%20%2Fnotebooks/wavelet-introduction/wavelet-basics.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/wavelet-introduction/wavelet-basics.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1143,24 +1162,16 @@ length of audio file = 156991 time steps
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1198,7 +1209,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 20 September 2024.
+  Last updated on 23 December 2024.
   <br/>
 </p>
   </div>
@@ -1215,8 +1226,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
      
@@ -1252,7 +1263,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 20 September 2024.
+          Last updated on 23 December 2024.
         </p>
       </div>
     </div>

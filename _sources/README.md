@@ -2,14 +2,14 @@
 
 # Wavelet Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![nightly-build](https://github.com/ProjectPythia/wavelet-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/wavelet-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/815311051.svg)](https://zenodo.org/badge/latestdoi/815311051)
 
-This Project Pythia Cookbook covers working with wavelets in Python
+This Project Pythia Cookbook covers how to work with wavelets in Python
 
 ## Motivation
-Wavelets are a powerful tool to analysis time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time vs. frequency limitations of Fourier Transforms
+Wavelets are a powerful tool to analyze time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time/frequency limitations of Fourier Transforms
 
 ## Authors
 
@@ -26,17 +26,17 @@ Wavelets are a powerful tool to analysis time-series data. When data frequencies
 This cookbook is broken into two main sections:
 
 - Foundations
-- Example Workflow
+- Example Workflows
 
 ### Foundations
 
-"Wavelet Basics" covers the motivation and background for wavelet analysis by review time-series data and the strengths and weaknesses of Fourier transform
+_"Wavelet Basics"_ covers the motivation and background for wavelet analysis by reviewing time-series data and the strengths and weaknesses of other signal analysis tools like Fourier Transform
 
 ### Example Workflows
 
-- "PyWavelets and Jingle Bells": Learn how to use `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
-- "Spy Keypad": Learn how to use wavelets to undercover the frequency and order of notes in an unkonwn piece of audio data
-- "Atmospheric Data: nino3": Replicate the power wavelet scalogram from the original 1999 Torrence and Compo paper in Python
+- _"PyWavelets and Jingle Bells"_: Learn how to use `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
+- _"Spy Keypad"_: Learn how to use wavelets to undercover the frequency and order of notes in an unknown piece of audio data
+- _"Atmospheric Data: Nino 3 SST Index"_: Learn how to apply wavelets to real atmospheric and oceanic data to generate a power wavelet scalogram, similiar to the 1999 paper ["A Practical Guide to Wavelet Analysis"](https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf) by Torrence and Compo in Python
 
 ## Running the Notebooks
 
