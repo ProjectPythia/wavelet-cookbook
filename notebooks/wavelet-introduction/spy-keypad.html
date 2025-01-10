@@ -74,16 +74,16 @@
                 gtag('config', 'G-T52X8HNYE8');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/example-workflows/spy-keypad';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/wavelet-introduction/spy-keypad';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Atmospheric Data: Nino 3 SST Index" href="nino3.html" />
+    <link rel="next" title="Atmospheric Data: Nino 3 SST Index" href="../example-workflows/nino3.html" />
     <link rel="prev" title="PyWavelets and Jingle Bells" href="jingle-bells.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="9 January 2025"/>
+    <meta name="docbuild:last-update" content="10 January 2025"/>
   </head>
   
   
@@ -372,14 +372,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../wavelet-introduction/wavelet-basics.html">Wavelet Basics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wavelet-basics.html">Wavelet Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jingle-bells.html">PyWavelets and Jingle Bells</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Spy Keypad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geoscience Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
 </ul>
 
     </div>
@@ -594,7 +594,7 @@ Total length in time steps = 60000
 </section>
 <section id="wavelet-analysis-power-spectrum">
 <h2>Wavelet Analysis: Power Spectrum<a class="headerlink" href="#wavelet-analysis-power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum plots the real component of the complex number returns from wavelet coefficents. This will return information about the frequency and time that we need to use to determine which notes are used in what order for the keypad.</p>
+<p>The power spectrum plots the real component of the complex number returns from wavelet coefficients. This will return information about the frequency and time that we need to use to determine which notes are used in what order for the keypad.</p>
 <p>For the purpose of this example, we will use the Morlet mother wavelet. Morlet is one type of mother wavelet useful for working with audio signals and is a good general wavelet to start with when analyzing frequencies of a signal.</p>
 <p>However, choosing which wavelet to use is an important step as different wavelets will be sensitive to different features in time-series data.</p>
 <p><a class="reference external" href="https://www.mathworks.com/help/wavelet/gs/choose-a-wavelet.html">To learn more!</a></p>
@@ -808,7 +808,7 @@ y-axis is: 39
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/example-workflows"
+            path: "./notebooks/wavelet-introduction"
         },
         predefinedOutput: true
     }
@@ -835,7 +835,7 @@ y-axis is: 39
       </div>
     </a>
     <a class="right-next"
-       href="nino3.html"
+       href="../example-workflows/nino3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -924,7 +924,7 @@ y-axis is: 39
       
       
       
-      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/example-workflows/spy-keypad.ipynb" target="_blank"
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/wavelet-introduction/spy-keypad.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -972,7 +972,7 @@ y-axis is: 39
       
       
       
-      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/example-workflows/spy-keypad.ipynb" target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/wavelet-introduction/spy-keypad.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -989,7 +989,7 @@ y-axis is: 39
       
       
       
-      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/example-workflows/spy-keypad.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/wavelet-introduction/spy-keypad.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1019,7 +1019,7 @@ y-axis is: 39
       
       
       
-      <li><a href="../../_sources/notebooks/example-workflows/spy-keypad.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/wavelet-introduction/spy-keypad.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1119,7 +1119,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 January 2025.
+  Last updated on 10 January 2025.
   <br/>
 </p>
   </div>
@@ -1173,7 +1173,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 January 2025.
+          Last updated on 10 January 2025.
         </p>
       </div>
     </div>

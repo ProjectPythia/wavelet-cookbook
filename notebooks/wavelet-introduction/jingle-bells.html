@@ -74,16 +74,16 @@
                 gtag('config', 'G-T52X8HNYE8');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/example-workflows/jingle-bells';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/wavelet-introduction/jingle-bells';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Spy Keypad" href="spy-keypad.html" />
-    <link rel="prev" title="Wavelet Basics" href="../wavelet-introduction/wavelet-basics.html" />
+    <link rel="prev" title="Wavelet Basics" href="wavelet-basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="9 January 2025"/>
+    <meta name="docbuild:last-update" content="10 January 2025"/>
   </head>
   
   
@@ -372,14 +372,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../wavelet-introduction/wavelet-basics.html">Wavelet Basics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wavelet-basics.html">Wavelet Basics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">PyWavelets and Jingle Bells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spy-keypad.html">Spy Keypad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geoscience Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
 </ul>
 
     </div>
@@ -494,7 +494,7 @@
 </section>
 <section id="pywavelets-overview">
 <h2>PyWavelets Overview<a class="headerlink" href="#pywavelets-overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>PyWavelets returns both the coefficents and frequency information for wavelets from the input data</p>
+<p>PyWavelets returns both the coefficients and frequency information for wavelets from the input data</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coeffs</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -505,18 +505,18 @@
 <ul class="simple">
 <li><p>data: input data (as an array)</p></li>
 <li><p>wavelet: name of the Mother wavelet</p></li>
-<li><p>scales: collection of the scales to use will determine the range which the wavelet will be streched or squished</p></li>
+<li><p>scales: collection of the scales to use will determine the range which the wavelet will be stretched or squished</p></li>
 </ul>
 <p>Optional:</p>
 <ul class="simple">
-<li><p>sampling_period: sampling period for frequencies output. Scales are not scaled by the period (and coefficents are independent of the sampling_period)</p></li>
+<li><p>sampling_period: sampling period for frequencies output. Scales are not scaled by the period (and coefficients are independent of the sampling_period)</p></li>
 </ul>
 </section>
 <section id="return-values">
 <h3>Return Values<a class="headerlink" href="#return-values" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>The continuous wavelet transforms in PyWavelets returns two values:</p>
 <ul class="simple">
-<li><p>coefficents: collection of complex number outputs for wavelet coefficients</p></li>
+<li><p>coefficients: collection of complex number outputs for wavelet coefficients</p></li>
 <li><p>frequencies: collection of frequencies (if the sampling period are in seconds then frequencies are in hertz otherwise a sampling period of 1 is assumed)</p></li>
 </ul>
 <p>The final size of coefficients depends on the length of the input data and the length of the given scales.</p>
@@ -742,7 +742,7 @@ y-axis be default is: 39
   225.69444444  219.59459459  213.81578947  208.33333333]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f589189c160&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2225867b50&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" src="../../_images/67f4519706e2e708ff31f95b260e723016a261816535b6a014c5d30ee6a9e81f.png" />
@@ -935,7 +935,7 @@ y-axis be default is: 39
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/example-workflows"
+            path: "./notebooks/wavelet-introduction"
         },
         predefinedOutput: true
     }
@@ -953,7 +953,7 @@ y-axis be default is: 39
                     
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../wavelet-introduction/wavelet-basics.html"
+       href="wavelet-basics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1064,7 +1064,7 @@ y-axis be default is: 39
       
       
       
-      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/example-workflows/jingle-bells.ipynb" target="_blank"
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1112,7 +1112,7 @@ y-axis be default is: 39
       
       
       
-      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/example-workflows/jingle-bells.ipynb" target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1129,7 +1129,7 @@ y-axis be default is: 39
       
       
       
-      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/example-workflows/jingle-bells.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/wavelet-introduction/jingle-bells.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1159,7 +1159,7 @@ y-axis be default is: 39
       
       
       
-      <li><a href="../../_sources/notebooks/example-workflows/jingle-bells.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1259,7 +1259,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 January 2025.
+  Last updated on 10 January 2025.
   <br/>
 </p>
   </div>
@@ -1313,7 +1313,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 January 2025.
+          Last updated on 10 January 2025.
         </p>
       </div>
     </div>

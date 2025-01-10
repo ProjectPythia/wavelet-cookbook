@@ -78,11 +78,11 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Spy Keypad" href="spy-keypad.html" />
+    <link rel="prev" title="Spy Keypad" href="../wavelet-introduction/spy-keypad.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="9 January 2025"/>
+    <meta name="docbuild:last-update" content="10 January 2025"/>
   </head>
   
   
@@ -373,11 +373,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../wavelet-introduction/wavelet-basics.html">Wavelet Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wavelet-introduction/jingle-bells.html">PyWavelets and Jingle Bells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wavelet-introduction/spy-keypad.html">Spy Keypad</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geoscience Workflows</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="jingle-bells.html">PyWavelets and Jingle Bells</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spy-keypad.html">Spy Keypad</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Atmospheric Data: Nino 3 SST Index</a></li>
 </ul>
 
@@ -593,18 +593,27 @@
 <p>A complex Morlet allows us to define both the bandwidth and the center frequency that the Morlet wavelet will be built from to produce optimal results.</p>
 <p><a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html#wavelet-bandwidth-and-center-frequencies">Here you can learn more about how <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code> configures Complex Morlet wavelets</a></p>
 <p>Below you can see how changing the bandwidth and center frequency will change how the mother Complex Morlet wavelet’s shape is formed. The shape of the wavelet will impact which frequencies it is sensitive to.</p>
-<p>wavelets = [f”cmor{x:.1f}-{y:.1f}” for x in [0.5, 1.5, 2.5] for y in [0.5, 1.0, 1.5]]
-fig, axs = plt.subplots(3, 3, figsize=(10, 10), sharex=True, sharey=True)
-for ax, wavelet in zip(axs.flatten(), wavelets):
-[psi, x] = pywt.ContinuousWavelet(wavelet).wavefun(10)
-ax.plot(x, np.real(psi), label=“real”)
-ax.plot(x, np.imag(psi), label=“imag”)
-ax.set_title(wavelet)
-ax.set_xlim([-5, 5])
-ax.set_ylim([-0.8, 1])
-ax.legend()
-plt.suptitle(“Complex Morlet Wavelets with different center frequencies and bandwidths from PyWavelets”)
-plt.show()</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelets</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;cmor</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">wavelet</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">wavelets</span><span class="p">):</span>
+    <span class="p">[</span><span class="n">psi</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">ContinuousWavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span><span class="o">.</span><span class="n">wavefun</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;imag&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Complex Morlet Wavelets with different center frequencies and bandwidths from PyWavelets&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b50d76d8072dbc2827d23147db5df71068aa76496575bf9772912cb7939aa04a.png" src="../../_images/b50d76d8072dbc2827d23147db5df71068aa76496575bf9772912cb7939aa04a.png" />
+</div>
+</div>
 <p>Changing the bandwidth and center frequency can be a useful tool to optimize how well the mother wavelet will be able to find frequencies in the data.</p>
 <p>Below you will see how different values for bandwidth and center frequency can lead to greater or poorer resolution of the same signal.</p>
 <div class="cell docutils container">
@@ -690,7 +699,7 @@ plt.show()</p>
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum is the real component of the wavelet coefficents. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
+<p>The power spectrum is the real component of the wavelet coefficients. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
@@ -778,7 +787,7 @@ plt.show()</p>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Frequency signals appear in more than just audio! A frequency analysis of weather data can inform us about how weather trends change through a year and over a decades worth of data</p>
+<p>Frequency signals appear in more than just audio! A frequency analysis of weather data can inform us about how weather trends change through a year and over a decades worth of data.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <ul class="simple">
@@ -825,7 +834,7 @@ plt.show()</p>
                     
 <div class="prev-next-area">
     <a class="left-prev"
-       href="spy-keypad.html"
+       href="../wavelet-introduction/spy-keypad.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1109,7 +1118,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 January 2025.
+  Last updated on 10 January 2025.
   <br/>
 </p>
   </div>
@@ -1163,7 +1172,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 January 2025.
+          Last updated on 10 January 2025.
         </p>
       </div>
     </div>
