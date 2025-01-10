@@ -25,8 +25,8 @@ Wavelets are a powerful tool to analyze time-series data. When data frequencies 
 
 This cookbook is broken into two main sections:
 
-- Foundations
-- Example Workflows
+- Introduction
+- Example Geoscience Workflows
 
 ### Introduction
 
