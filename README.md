@@ -28,9 +28,9 @@ This cookbook is broken into two main sections:
 - Foundations
 - Example Workflows
 
-### Foundations
+### Introduction
 
-- _"Wavelet Basics"_ covers the motivation and background for wavelet analysis by reviewing time-series data and the strengths and weaknesses of other signal analysis tools like Fourier Transform
+- _"Wavelet Basics"_: Understand the motivation and background for wavelet analysis by reviewing time-series data and the strengths and weaknesses of other signal analysis tools like Fourier Transform
 - _"PyWavelets and Jingle Bells"_: Learn how to use `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
 - _"Spy Keypad"_: Learn how to use wavelets to undercover the frequency and order of notes in an unknown piece of audio data
 
