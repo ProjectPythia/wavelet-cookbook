@@ -7,8 +7,8 @@ parts:
   - caption: Introduction
     chapters:
       - file: notebooks/wavelet-introduction/wavelet-basics
-  - caption: Example Workflows
+      - file: notebooks/wavelet-introduction/jingle-bells
+      - file: notebooks/wavelet-introduction/spy-keypad
+  - caption: Geoscience Workflows
     chapters:
-      - file: notebooks/example-workflows/jingle-bells
-      - file: notebooks/example-workflows/spy-keypad
       - file: notebooks/example-workflows/nino3

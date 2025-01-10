@@ -30,13 +30,13 @@ This cookbook is broken into two main sections:
 
 ### Foundations
 
-_"Wavelet Basics"_ covers the motivation and background for wavelet analysis by reviewing time-series data and the strengths and weaknesses of other signal analysis tools like Fourier Transform
-
-### Example Workflows
-
+- _"Wavelet Basics"_ covers the motivation and background for wavelet analysis by reviewing time-series data and the strengths and weaknesses of other signal analysis tools like Fourier Transform
 - _"PyWavelets and Jingle Bells"_: Learn how to use `PyWavelets`, a Python implementation of wavelet analysis, to determine the order of notes in a simple musical piece
 - _"Spy Keypad"_: Learn how to use wavelets to undercover the frequency and order of notes in an unknown piece of audio data
-- _"Atmospheric Data: Nino 3 SST Index"_: Learn how to apply wavelets to real atmospheric and oceanic data to generate a power wavelet scalogram, similiar to the 1999 paper ["A Practical Guide to Wavelet Analysis"](https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf) by Torrence and Compo in Python
+
+### Geoscience Workflows
+
+- _"Atmospheric Data: Nino 3 SST Index"_: Learn how to apply wavelets to real atmospheric and oceanic data to generate a power wavelet scalogram, similar to the 1999 paper ["A Practical Guide to Wavelet Analysis"](https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf) by Torrence and Compo in Python
 
 ## Running the Notebooks
 
@@ -63,17 +63,15 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-(Replace "cookbook-example" with the title of your cookbooks)
-
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythia/wavelet-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythia/cookbook-example.git
+    git clone https://github.com/ProjectPythia/wavelet-cookbook.git
    ```
 
-1. Move into the `cookbook-example` directory
+1. Move into the `wavelet-cookbook` directory
    ```bash
-   cd cookbook-example
+   cd wavelet-cookbook
    ```
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
