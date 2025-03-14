@@ -12,3 +12,4 @@ parts:
   - caption: Geoscience Workflows
     chapters:
       - file: notebooks/example-workflows/nino3
+      - file: notebooks/example-workflows/buoy-wave-height
