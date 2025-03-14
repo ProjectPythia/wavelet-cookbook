@@ -1,0 +1,1357 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PyWavelets and Jingle Bells &#8212; Project Pythia Cookbook Template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/wavelet-introduction/jingle-bells';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spy Keypad" href="spy-keypad.html" />
+    <link rel="prev" title="Wavelet Basics" href="wavelet-basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="14 March 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Wavelet Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wavelet-basics.html">Wavelet Basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PyWavelets and Jingle Bells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spy-keypad.html">Spy Keypad</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geoscience Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/buoy-wave-height.html">Wave Height from Station 45214 - South Michigan Spotter Buoy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Animation_portail_musique.gif" alt="Piano gif from Wikipedia" />
+</p><section class="tex2jax_ignore mathjax_ignore" id="pywavelets-and-jingle-bells">
+<h1>PyWavelets and Jingle Bells<a class="headerlink" href="#pywavelets-and-jingle-bells" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<p><strong>Part 1 for working with audio signals</strong></p>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>This notebook will generate a wavelet scalogram to determine the order of notes in a short .wav file. You’ll learn how to generate a Wavelet Power spectrum graph</p>
+<ol class="arabic simple">
+<li><p>Prerequisites</p></li>
+<li><p>Background</p></li>
+<li><p>PyWavelets Overview</p></li>
+<li><p>Wavelet Power Spectrum</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Intro to Matplotlib</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Used to plot data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/pandas/pandas.html">Intro to Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy/numpy-basics.html">Intro to Numpy</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Used to work with large arrays</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy-1.13.1/tutorial/fft.html">Intro to SciPy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Used to work with .wav files and built-in Fast Fourier Transform</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 20 minutes</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Wavelet analysis is accomplished in Python via external package. <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html#pywt.cwt">PyWavelets</a> is an open source Python package for wavelet analysis</p>
+<p>Either with pip install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyWavelets</span>
+</pre></div>
+</div>
+<p>Or with conda</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pywavelets</span>
+</pre></div>
+</div>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>                          <span class="c1"># working with arrays</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>                         <span class="c1"># working with dataframes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">wavfile</span>                <span class="c1"># loading in wav files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>             <span class="c1"># plot data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.fftpack</span><span class="w"> </span><span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>      <span class="c1"># working with Fourier Transforms</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pywt</span>                                 <span class="c1"># PyWavelets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pywavelets-overview">
+<h2>PyWavelets Overview<a class="headerlink" href="#pywavelets-overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>PyWavelets returns both the coefficients and frequency information for wavelets from the input data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coeffs</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="input-values">
+<h3>Input Values<a class="headerlink" href="#input-values" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>The <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/cwt.html">Continuous Wavelet Transform (CWT)</a> in PyWavelets accepts multiple input values:</p>
+<p>Required:</p>
+<ul class="simple">
+<li><p>data: input data (as an array)</p></li>
+<li><p>wavelet: name of the Mother wavelet</p></li>
+<li><p>scales: collection of the scales to use will determine the range which the wavelet will be stretched or squished</p></li>
+</ul>
+<p>Optional:</p>
+<ul class="simple">
+<li><p>sampling_period: sampling period for frequencies output. Scales are not scaled by the period (and coefficients are independent of the sampling_period)</p></li>
+</ul>
+</section>
+<section id="return-values">
+<h3>Return Values<a class="headerlink" href="#return-values" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>The continuous wavelet transforms in PyWavelets returns two values:</p>
+<ul class="simple">
+<li><p>coefficients: collection of complex number outputs for wavelet coefficients</p></li>
+<li><p>frequencies: collection of frequencies (if the sampling period are in seconds then frequencies are in hertz otherwise a sampling period of 1 is assumed)</p></li>
+</ul>
+<p>The final size of coefficients depends on the length of the input data and the length of the given scales.</p>
+</section>
+<section id="choosing-a-scale">
+<h3>Choosing a Scale<a class="headerlink" href="#choosing-a-scale" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="scales-vs-frequency">
+<h4>Scales vs. Frequency<a class="headerlink" href="#scales-vs-frequency" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<p>The range of scales are a combination of the smallest scale (s0), spacing between discrete scales (dj), and the maximum scale (jtot).</p>
+<p>For the purpose of this exercise, the musical range of frequencies range from 261 - 494 Hz.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Note</p></th>
+<th class="head"><p>Freq</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A note</p></td>
+<td><p>440 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p>B note</p></td>
+<td><p>494 hz</p></td>
+</tr>
+<tr class="row-even"><td><p>C note</p></td>
+<td><p>261 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p>D note</p></td>
+<td><p>293 hz</p></td>
+</tr>
+<tr class="row-even"><td><p>E note</p></td>
+<td><p>330 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p>F note</p></td>
+<td><p>350 hz</p></td>
+</tr>
+<tr class="row-even"><td><p>G note</p></td>
+<td><p>392 hz</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Note: Musical note frequencies can vary, these frequencies are taken from <a class="reference external" href="https://mixbutton.com/mixing-articles/music-note-to-frequency-chart/">here</a></em></p>
+<p>It is good practice to include a range greater than precisely needed. This will make the bands for each frequency in the wavelets clearer.</p>
+<p>Scales will change the shape of the wavelet to have it match a specific frequency. For example, scalings from 1 to 40 represent a frequency range from 8125 - 208.33 Hz.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">signal_data</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;jingle_bells.wav&#39;</span><span class="p">)</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signal_data</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="extract-audio-wav-file">
+<h2>Extract audio .wav file<a class="headerlink" href="#extract-audio-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The .wav input file contains information about the amplitude at every time step (in seconds) in the file. The frequency will determine which note each part of the piece represents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleRate</span><span class="p">,</span> <span class="n">signalData</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;../data/jingle_bells.wav&quot;</span><span class="p">)</span>
+
+<span class="n">duration</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signalData</span><span class="p">)</span> <span class="o">/</span> <span class="n">sampleRate</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampleRate</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample Rate: </span><span class="si">{</span><span class="n">sampleRate</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;duration = </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Length in time steps = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample Rate: 10000
+duration = 15.6991 seconds
+Total Length in time steps = 156991
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lets-give-the-data-a-look">
+<h2>Let’s Give the Data a Look!<a class="headerlink" href="#lets-give-the-data-a-look" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>It is always good practice to view the data that we have collected. First, let’s organize the data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe to organize the amplitude and time stamps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="n">signalData</span><span class="p">})</span>
+<span class="n">signal_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time (seconds)</th>
+      <th>amplitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0000</td>
+      <td>-417</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0001</td>
+      <td>-2660</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0002</td>
+      <td>-2491</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0003</td>
+      <td>6441</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0004</td>
+      <td>-8540</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="plot-a-small-sample-of-the-wav-file">
+<h3>Plot a Small Sample of the .wav File<a class="headerlink" href="#plot-a-small-sample-of-the-wav-file" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Plot a small subsample of the .wav to visualize the input data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">signal_df</span><span class="p">[</span><span class="s2">&quot;time (seconds)&quot;</span><span class="p">],</span> <span class="n">signal_df</span><span class="p">[</span><span class="s2">&quot;amplitude&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Subsample of </span><span class="se">\&quot;</span><span class="s2">Jingle Bells</span><span class="se">\&quot;</span><span class="s2"> Audio File&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">signal_df</span><span class="p">[</span><span class="s2">&quot;time (seconds)&quot;</span><span class="p">][</span><span class="mi">2000</span><span class="p">],</span> <span class="n">signal_df</span><span class="p">[</span><span class="s2">&quot;time (seconds)&quot;</span><span class="p">][</span><span class="mi">3000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (seconds)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7cce823ad011d8706009cf7c766f3b152858728622bee5fe1c69315942af4c8f.png" src="../../_images/7cce823ad011d8706009cf7c766f3b152858728622bee5fe1c69315942af4c8f.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="power-spectrum">
+<h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> is a complex number with a real and an imaginary part (1 + 2i). The power spectrum plots the real component of the complex number. The real component represents the magnitude of the wavelet coefficient displayed as the absolute value of the coefficients squared.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet_mother</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span> <span class="c1"># morlet mother wavelet</span>
+
+<span class="c1"># scale determines how squished or stretched a wavelet is</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signalData</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span> <span class="o">=</span> <span class="n">wavelet_mother</span><span class="p">)</span>
+
+<span class="c1"># Shape of wavelet transform</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;size </span><span class="si">{</span><span class="n">wavelet_coeffs</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="n">wavelet_coeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> scales and </span><span class="si">{</span><span class="n">wavelet_coeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> time steps&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x-axis be default is: </span><span class="si">{</span><span class="n">wavelet_coeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y-axis be default is: </span><span class="si">{</span><span class="n">wavelet_coeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>size (39, 156991) with 39 scales and 156991 time steps
+x-axis be default is: 156991
+y-axis be default is: 39
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-note-on-choosing-the-right-scales">
+<h3>A Note on Choosing the Right Scales<a class="headerlink" href="#a-note-on-choosing-the-right-scales" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">freqs</span></code> is normalized frequencies, so it needs to be multiplied by this sampling frequency to turn it back into frequencies which means that you need to multiply them by your sampling frequency (500Hz) to turn them into actual frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet_mother</span> <span class="o">=</span> <span class="s2">&quot;morl&quot;</span> <span class="c1"># morlet mother wavelet</span>
+
+<span class="c1"># scale determines how squished or stretched a wavelet is</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signalData</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span> <span class="o">=</span> <span class="n">wavelet_mother</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightpink&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="c1"># A note: 440 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">494</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># B Note: 494 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">261</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">293</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>     <span class="c1"># D Note: 293 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>    <span class="c1"># E Note: 330 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>      <span class="c1"># F Note: 350 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">392</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>    <span class="c1"># G Note: 392 hz</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Frequency in Hz:</span><span class="se">\n</span><span class="si">{</span><span class="n">freqs</span><span class="o">*</span><span class="n">sampleRate</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="o">*</span><span class="n">sampleRate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frequency in Hz:
+[8125.         4062.5        2708.33333333 2031.25       1625.
+ 1354.16666667 1160.71428571 1015.625       902.77777778  812.5
+  738.63636364  677.08333333  625.          580.35714286  541.66666667
+  507.8125      477.94117647  451.38888889  427.63157895  406.25
+  386.9047619   369.31818182  353.26086957  338.54166667  325.
+  312.5         300.92592593  290.17857143  280.17241379  270.83333333
+  262.09677419  253.90625     246.21212121  238.97058824  232.14285714
+  225.69444444  219.59459459  213.81578947  208.33333333]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f59d216dba0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/daa4c00dd7e6c91d93e8889915b341398a180d9cdb9d8550a860582ef9acd8eb.png" src="../../_images/daa4c00dd7e6c91d93e8889915b341398a180d9cdb9d8550a860582ef9acd8eb.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="plot-scalogram">
+<h2>Plot scalogram<a class="headerlink" href="#plot-scalogram" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The scalogram will visually display the strength of the frequency at a particular time interval. A stronger signal in red represents a wavelet that strongly matches a specific frequency in that range, while blue represents where the wavelet has a weaker match to a specific frequency. The best match for a note will be found where the signal is strongest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magnitude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time Steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale Sensitivity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+           <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+           <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/662f2df45785242192b562be14226c862103930d77d2bf99db2464877b657c77.png" src="../../_images/662f2df45785242192b562be14226c862103930d77d2bf99db2464877b657c77.png" />
+</div>
+</div>
+</section>
+<section id="overlay-possible-frequencies">
+<h2>Overlay Possible Frequencies<a class="headerlink" href="#overlay-possible-frequencies" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>To overlay these frequencies with the wavelet scalogram:</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Important Note</p>
+<p>To convert HZ frequency to a <code>scale = hz *.0001</code> (where 0.01 is 100 Hz sampling) then apply <code>frequency2scale()</code> PyWavelets function</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Overlay frequency of notes as dotted lines</span>
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampleRate</span>
+<span class="n">a_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">440</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">a_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightpink&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="c1"># A note: 440 hz</span>
+<span class="n">b_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">494</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">b_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># B Note: 494 hz</span>
+<span class="n">c_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">261</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">c_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
+<span class="n">d_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">293</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">d_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>     <span class="c1"># D Note: 293 hz</span>
+<span class="n">e_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">330</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">e_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>    <span class="c1"># E Note: 330 hz</span>
+<span class="n">f_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">350</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">f_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>      <span class="c1"># F Note: 350 hz</span>
+<span class="n">g_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">392</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">g_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>    <span class="c1"># G Note: 392 hz</span>
+
+<span class="c1"># Plot Power scalogram</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magntiude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Note Frequency as Scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time Steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale Sensitivity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> 
+           <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+           <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c58fbbcd6454bff4ebe91146acf1681feaf8c9b2dd1628e322a749a7407c4dd5.png" src="../../_images/c58fbbcd6454bff4ebe91146acf1681feaf8c9b2dd1628e322a749a7407c4dd5.png" />
+</div>
+</div>
+</section>
+<section id="determining-which-frequencies-to-overlay">
+<h2>Determining Which Frequencies to Overlay<a class="headerlink" href="#determining-which-frequencies-to-overlay" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>For this example, we know that the input data is “Jingle Bells” so we know which notes are going to be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Jingle Bells, Jingle Bells, Jingle All the Way&quot;</span> <span class="k">as</span> <span class="n">EEE</span> <span class="n">EEE</span> <span class="n">EGCDE</span>
+</pre></div>
+</div>
+<p>However, let’s imagine that we aren’t sure. Wavelets gain information about <em>when</em> a frequency occurs, but at a lower resolution to an exact frequency. To determine which notes are a best fit, you can make use of FFT to determinine which notes to include. Without FFT, the larger possible ranges of frequency can make it possible to confuse nearby notes.</p>
+<section id="fast-fourier-transform">
+<h3>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fourier_transform</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">signalData</span><span class="p">))</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fourier_transform</span><span class="p">),</span> <span class="n">sample_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">fourier_transform</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">261</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>    <span class="c1"># C Note: 261 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">293</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># D Note: 293 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># E Note: 330 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">391</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># G Note: 391 hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Signal Frequency Prevalence (FFT)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/13e42b7a5abb351874b459407bb54e258254ed6e0a4d071c876bccdf339d7429.png" src="../../_images/13e42b7a5abb351874b459407bb54e258254ed6e0a4d071c876bccdf339d7429.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="overlay-frequency-of-notes">
+<h2>Overlay Frequency of Notes<a class="headerlink" href="#overlay-frequency-of-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Using FFT we can now say that there are four clear frequencies that are associated with four notes for CDEG.</p>
+</section>
+<section id="fast-fourier-transform-predicts-four-notes">
+<h2>Fast Fourier Transform Predicts Four Notes<a class="headerlink" href="#fast-fourier-transform-predicts-four-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>FFT predicts an output with four notes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">G</span>
+</pre></div>
+</div>
+<p>Let’s plot the notes!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Overlay frequency of notes as dotted lines</span>
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampleRate</span>
+<span class="n">c_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">261</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">c_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>       <span class="c1"># C Note: 261 hz</span>
+<span class="n">d_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">293</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">d_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>     <span class="c1"># D Note: 293 hz</span>
+<span class="n">e_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">330</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">e_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>    <span class="c1"># E Note: 330 hz</span>
+<span class="n">g_freq</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">frequency2scale</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="mi">392</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">g_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>    <span class="c1"># G Note: 392 hz</span>
+
+<span class="c1"># Plot Power scalogram</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)))</span> <span class="c1"># compare the magntiude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Note Frequency as Scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time Steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale Sensitivity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> 
+           <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+           <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cecbbacb079efa3d68e6943c7fa2a99fa45ce59764b12ea031452d8131cd122c.png" src="../../_images/cecbbacb079efa3d68e6943c7fa2a99fa45ce59764b12ea031452d8131cd122c.png" />
+</div>
+</div>
+</section>
+<section id="four-notes">
+<h2>Four Notes!<a class="headerlink" href="#four-notes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The darkest color correlates with the frequency at each time stamp. Rather than appearing as distinct peaks like a Fourier Transform, wavelets return a gradient of frequencies. This is the loss in precision due to Heisenberg’s Uncertainty Principle. While the frequencies can still be determined, there is some level of uncertainty in the exact frequencies. This is where combining wavelets with a Fourier Transform can be useful. We now know that this piece has four notes <code class="docutils literal notranslate"><span class="pre">CDEG</span></code>. The vertical bands represent where the note ends before the next note begins. This piece of music has a deliberate start and stop so this band will not always be as obvious in other pieces of music.</p>
+<p>We can read this wavelet analysis by finding what note corresponds with the darkest band.</p>
+<p>We should now have the order of the notes, read from left to right:</p>
+<section id="eee-eee-egcde">
+<h3>EEE EEE EGCDE<a class="headerlink" href="#eee-eee-egcde" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Wavelets can report on both the frequency and time a frequency occurs. However, due to Heisenberg’s Uncertainty Principle, by gaining resolution on time, some resolution on frequency is lost. It can be helpful to incorporate both a Fourier Transform and a Wavelet analysis to a signal to help determine the possible ranges of expected frequencies. <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code> is a free open-source package for wavelets in Python.</p>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p><strong>Up next: apply wavelets transform to determine the frequency <em>and</em> order of an unknown input!</strong></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/wavelet-introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wavelet-basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Wavelet Basics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spy-keypad.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spy Keypad</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pywavelets-overview">PyWavelets Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-values">Input Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-values">Return Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-scale">Choosing a Scale</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scales-vs-frequency">Scales vs. Frequency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-audio-wav-file">Extract audio .wav file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-give-the-data-a-look">Let’s Give the Data a Look!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-small-sample-of-the-wav-file">Plot a Small Sample of the .wav File</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-choosing-the-right-scales">A Note on Choosing the Right Scales</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-scalogram">Plot scalogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-possible-frequencies">Overlay Possible Frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-which-frequencies-to-overlay">Determining Which Frequencies to Overlay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform">Fast Fourier Transform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-frequency-of-notes">Overlay Frequency of Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-predicts-four-notes">Fast Fourier Transform Predicts Four Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#four-notes">Four Notes!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eee-eee-egcde">EEE EEE EGCDE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/wavelet-cookbook/main?urlpath=lab/tree/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/edit/main/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/wavelet-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/wavelet-introduction/jingle-bells.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/wavelet-introduction/jingle-bells.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 14 March 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 14 March 2025.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+  <div class="container">
+    <center>
+      Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+      in Pythia Cookbooks is licensed under
+      <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+      other non-code content is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons BY 4.0 (CC BY 4.0)</a
+      >.
+    </center>
+    <br /><br />
+    <div class="row">
+      <p class="m-0">
+        <img
+          src="../../_static/footer-logo-nsf.png"
+          style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+        />
+        This material is based upon work supported by the National Science
+        Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+        and conclusions or recommendations expressed in this material are those
+        of the author(s) and do not necessarily reflect the views of the
+        National Science Foundation.
+      </p>
+    </div>
+  </div>
+</div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>
