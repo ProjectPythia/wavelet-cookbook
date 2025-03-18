@@ -78,7 +78,7 @@
     <link rel="prev" title="Atmospheric Data: Nino 3 SST Index" href="nino3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="14 March 2025"/>
+    <meta name="docbuild:last-update" content="18 March 2025"/>
   </head>
   
   
@@ -567,7 +567,7 @@ Last Date = 2024-04-30 15:05:00
 <p>Let’s give the data a look! We will be looking at about four months worth of buoy data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Wave Height on Lake Michigan (Station 45214)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -578,7 +578,7 @@ Last Date = 2024-04-30 15:05:00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/21f9aaf351eb120982674fdf814241c718acd19cb93c4893c340e64f42ade81c.png" src="../../_images/21f9aaf351eb120982674fdf814241c718acd19cb93c4893c340e64f42ade81c.png" />
+<img alt="../../_images/a8c39fbfa68088c2e5cca3701662941df76bdc53b8be41b902a5a6c58a386b3d.png" src="../../_images/a8c39fbfa68088c2e5cca3701662941df76bdc53b8be41b902a5a6c58a386b3d.png" />
 </div>
 </div>
 </section>
@@ -622,10 +622,54 @@ Last Date = 2024-04-30 15:05:00
 </section>
 <section id="applying-wavelets">
 <h2>Applying Wavelets<a class="headerlink" href="#applying-wavelets" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">jtot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dj</span><span class="p">)</span>
+<span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">lm_wave_height</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="n">sampling_period</span><span class="o">=</span><span class="n">dt</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="power-spectrum">
 <h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The power spectrum is the real component of the wavelet coefficients. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot contour around data</span>
+<span class="c1">#plt.contour(</span>
+<span class="c1">#    power, vmax=(power).max(), vmin=(power).min(), levels=10</span>
+<span class="c1">#)</span>
+<span class="c1">#plt.contour(power, levels=10, colors=&quot;k&quot;, linewidths=0.5, alpha=0.75)</span>
+
+<span class="c1"># Plot Scalogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Wave Height on Lake Michigan (Station 45214)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6bd6180e85d0aeaff76213de866af2d989f9dbcc6e37391932079b48fa250924.png" src="../../_images/6bd6180e85d0aeaff76213de866af2d989f9dbcc6e37391932079b48fa250924.png" />
+</div>
+</div>
 <p>The power spectrum above demonstrates a strong peak (in yellow) at 50 that represents an interesting consistent pattern across the decades of atmosphere data.</p>
 </section>
 <hr class="docutils" />
@@ -964,7 +1008,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 14 March 2025.
+  Last updated on 18 March 2025.
   <br/>
 </p>
   </div>
@@ -1018,7 +1062,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 14 March 2025.
+          Last updated on 18 March 2025.
         </p>
       </div>
     </div>
