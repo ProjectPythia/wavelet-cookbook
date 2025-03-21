@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Wave Height from Station 44013 &#8212; Project Pythia Cookbook Template</title>
+    <title>Wave Height from Buoy Station 44013 &#8212; Project Pythia Cookbook Template</title>
   
   
   
@@ -376,7 +376,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Geoscience Workflows</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Wave Height from Station 44013</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Wave Height from Buoy Station 44013</a></li>
 </ul>
 
     </div>
@@ -408,8 +408,8 @@
                     
   <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Animation_for_a_deep_water_wave.gif" alt="Animation for a deep water wave" />
-</p><section class="tex2jax_ignore mathjax_ignore" id="wave-height-from-station-44013">
-<h1>Wave Height from Station 44013<a class="headerlink" href="#wave-height-from-station-44013" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+</p><section class="tex2jax_ignore mathjax_ignore" id="wave-height-from-buoy-station-44013">
+<h1>Wave Height from Buoy Station 44013<a class="headerlink" href="#wave-height-from-buoy-station-44013" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -470,7 +470,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>             <span class="c1"># plot data</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>                             <span class="c1"># converting strings to datetime objects</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>                             <span class="c1"># retrieve data from text on a website</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pywt</span>                                 <span class="c1"># PyWavelets</span>
 </pre></div>
@@ -559,7 +558,7 @@ Last Date = 2002-12-17 20:00:00
 <p>Let’s give the data a look!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Wave Height on Station 41001&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -570,7 +569,7 @@ Last Date = 2002-12-17 20:00:00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d66b0f1f7b23203a687261693d72878cc35bf636f5117567973a2d21d2b3ab66.png" src="../../_images/d66b0f1f7b23203a687261693d72878cc35bf636f5117567973a2d21d2b3ab66.png" />
+<img alt="../../_images/e9fc53bcdf6ad84705816732821693621acbf511b0481b844fa086f49fe65027.png" src="../../_images/e9fc53bcdf6ad84705816732821693621acbf511b0481b844fa086f49fe65027.png" />
 </div>
 </div>
 </section>
@@ -617,9 +616,9 @@ Last Date = 2002-12-17 20:00:00
 <p>Filter out nan values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave_height</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wave_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave_height</span><span class="p">))</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span>
-<span class="n">xfiltered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lm_len</span><span class="p">,</span> <span class="n">lm_len</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">wave_height</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+<span class="n">xfiltered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">wave_len</span><span class="p">,</span> <span class="n">wave_len</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">wave_height</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -630,8 +629,7 @@ Last Date = 2002-12-17 20:00:00
 <span class="n">wavelet_coeffs</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">xfiltered</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="n">scales</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="n">sampling_period</span><span class="o">=</span><span class="n">dt</span>
 <span class="p">)</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">scale2frequency</span><span class="p">(</span><span class="n">wavelet_mother</span><span class="p">,</span> <span class="n">scales</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span>
+<span class="c1">#f = pywt.scale2frequency(wavelet_mother, scales)/dt</span>
 <span class="c1">#print(f)</span>
 </pre></div>
 </div>
@@ -650,24 +648,30 @@ Last Date = 2002-12-17 20:00:00
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="c1"># Plot Scalogram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">power</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
 <span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Wave Height at Station 44013&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">730</span> <span class="c1"># hours in a month</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span>
+<span class="n">x_ticklabels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">[::</span><span class="n">num</span><span class="p">]:</span>
+    <span class="n">x_ticklabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">x_ticklabels</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Buoy Height at Station 44013&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date (Hours)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scale&quot;</span><span class="p">)</span>
-<span class="c1">#ax.set_xlim([dates[0], dates[-1]])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1394ddf10a5daa654454be10534bb3f740cab04b04c9c0c3d58fcd4ceaedbfe.png" src="../../_images/a1394ddf10a5daa654454be10534bb3f740cab04b04c9c0c3d58fcd4ceaedbfe.png" />
+<img alt="../../_images/c93c18684f7a481ed02d762145c24602bfe0e041386841003dc157f00acdd5bc.png" src="../../_images/c93c18684f7a481ed02d762145c24602bfe0e041386841003dc157f00acdd5bc.png" />
 </div>
 </div>
 <p>The power spectrum above demonstrates a strong peak (in yellow) at  …[TODO]</p>
