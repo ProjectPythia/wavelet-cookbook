@@ -659,7 +659,7 @@ Last Date = 2002-12-17 20:00:00
 <span class="n">x_ticks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span>
 <span class="n">x_ticklabels</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">[::</span><span class="n">num</span><span class="p">]:</span>
-    <span class="n">x_ticklabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+    <span class="n">x_ticklabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">)[:</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">x_ticklabels</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Buoy Height at Station 44013&quot;</span><span class="p">)</span>
@@ -671,7 +671,7 @@ Last Date = 2002-12-17 20:00:00
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c93c18684f7a481ed02d762145c24602bfe0e041386841003dc157f00acdd5bc.png" src="../../_images/c93c18684f7a481ed02d762145c24602bfe0e041386841003dc157f00acdd5bc.png" />
+<img alt="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" src="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" />
 </div>
 </div>
 <p>The power spectrum above demonstrates a strong peak (in yellow) at  …[TODO]</p>
