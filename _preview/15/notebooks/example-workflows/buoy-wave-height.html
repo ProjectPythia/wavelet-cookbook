@@ -377,7 +377,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="nino3.html">Atmospheric Data: Nino 3 SST Index</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Wave Height from Buoy 44013</a></li>
-
 </ul>
 
     </div>
@@ -650,6 +649,10 @@ Last Date  = 2002-12-17 20:00:00
 </div>
 </div>
 </div>
+</section>
+<section id="power-spectrum">
+<h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The power spectrum is the real component of the wavelet coefficients. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
@@ -681,9 +684,8 @@ Last Date  = 2002-12-17 20:00:00
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="what-went-wrong">
-<h1>What Went Wrong?<a class="headerlink" href="#what-went-wrong" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="what-went-wrong">
+<h2>What Went Wrong?<a class="headerlink" href="#what-went-wrong" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The current wavelet has a lot of blank space. This is the result of the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values. So, to get a complete wavelet, we should filter out the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values before we apply a wavelet. We can do this by applying a mask and interpolating.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -707,9 +709,9 @@ Last Date  = 2002-12-17 20:00:00
 </div>
 </div>
 </div>
-<section id="power-spectrum">
-<h2>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum is the real component of the wavelet coefficients. We can find this value by squaring the absolute value of the <code class="docutils literal notranslate"><span class="pre">wavelet_coeffs</span></code> to return the magnitude of the real component to make a better graph.</p>
+</section>
+<section id="power-spectrum-take-two">
+<h2>Power Spectrum, Take Two<a class="headerlink" href="#power-spectrum-take-two" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
@@ -740,6 +742,9 @@ Last Date  = 2002-12-17 20:00:00
 <img alt="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" src="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" />
 </div>
 </div>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The power spectrum above demonstrates a strong peak (in yellow) wihtin the first month of the year.</p>
 </section>
 <hr class="docutils" />
@@ -817,7 +822,6 @@ Last Date  = 2002-12-17 20:00:00
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Wave Height from Buoy 44013</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
@@ -828,19 +832,16 @@ Last Date  = 2002-12-17 20:00:00
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-and-view-data">Plot and View Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-input-values">Wavelet Input Values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-wavelets">Applying Wavelets</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-went-wrong">What Went Wrong?</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum">Power Spectrum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-went-wrong">What Went Wrong?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectrum-take-two">Power Spectrum, Take Two</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
