@@ -78,7 +78,7 @@
     <link rel="prev" title="Atmospheric Data: Nino 3 SST Index" href="nino3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="24 March 2025"/>
+    <meta name="docbuild:last-update" content="25 March 2025"/>
   </head>
   
   
@@ -413,7 +413,7 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Generating a wavelet power spectrum from the time-series data <a class="reference internal" href="#(https://www.ndbc.noaa.gov/station_history.php?station=44013)"><span class="xref myst">from wave heights from buoy station 44013</span></a> east of Boston</p>
+<p>Generating a wavelet power spectrum from the time-series data <a class="reference external" href="https://www.ndbc.noaa.gov/station_history.php?station=44013">from wave heights from buoy station 44013</a> east of Boston</p>
 <ol class="arabic simple">
 <li><p>Prerequisties</p></li>
 <li><p>Background</p></li>
@@ -472,9 +472,9 @@
 </table>
 </div>
 <p>44013 is owned and operated by the National Data Buoy Center and measures a depth of 64.6 meters and has a watch circle radius of 122 yards, with standard meterological data dating back to 1984.</p>
-<p>Example Buoy Camera Photos from March 24, 2025:</p>
-<p><img alt="buoy-camera" src="https://www.ndbc.noaa.gov/images/buoycam/Z03A_2025_03_24_1710.jpg" /></p>
-<p>For thie notebook, we will be investigating the wave height of the buoy across two years in the early 2000’s</p>
+<p>Example Buoy Camera Photos from March 25, 2025:</p>
+<p><img alt="buoy-camera" src="https://www.ndbc.noaa.gov/images/buoycam/Z03A_2025_03_25_1710.jpg" /></p>
+<p>For this notebook, we will be investigating the wave height of the buoy across two years in the early 2000’s</p>
 </section>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -514,7 +514,7 @@
     <span class="n">wave_height_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;WVHT&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     
     <span class="c1"># collect data from all rows for the columns of datetime and wave height</span>
-    <span class="c1"># [1:] skips the first row with header informaiton</span>
+    <span class="c1"># [1:] skips the first row with header information</span>
     <span class="n">date_time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="n">datetime_index</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
     <span class="n">data_wave_height</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="n">wave_height_index</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span> 
 
@@ -538,15 +538,15 @@
 <p>Buoy stores null data as 99.00, so we will replace 99.00 with nan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wave hieght before applying nan = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wave height before applying nan = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
 <span class="n">wave_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">wave_height</span> <span class="o">==</span> <span class="mf">99.00</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">wave_height</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wave hieght after applying nan  = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wave height after applying nan  = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Max wave hieght before applying nan = 99.0 m
-Max wave hieght after applying nan  = 9.38 m
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Max wave height before applying nan = 99.0 m
+Max wave height after applying nan  = 9.38 m
 </pre></div>
 </div>
 </div>
@@ -554,12 +554,12 @@ Max wave hieght after applying nan  = 9.38 m
 </section>
 <section id="convert-time-to-datetimes">
 <h2>Convert Time to Datetimes<a class="headerlink" href="#convert-time-to-datetimes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Buoy stores datetime information as seperate columns of data with <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> <code class="docutils literal notranslate"><span class="pre">MM</span></code> <code class="docutils literal notranslate"><span class="pre">DD</span></code> and <code class="docutils literal notranslate"><span class="pre">HH</span></code>. For Python to recognize these strings as a date, we need to combine the strings into a single datetime value.</p>
+<p>Buoy stores datetime information as separate columns of data with <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> <code class="docutils literal notranslate"><span class="pre">MM</span></code> <code class="docutils literal notranslate"><span class="pre">DD</span></code> and <code class="docutils literal notranslate"><span class="pre">HH</span></code>. For Python to recognize these strings as a date, we need to combine the strings into a single datetime value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">date_times</span><span class="p">:</span>
-    <span class="c1"># combine each seperate column into a single string: YYYYMMDDHH</span>
+    <span class="c1"># combine each separate column into a single string: YYYYMMDDHH</span>
     <span class="n">date_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
     <span class="c1"># convert string to a datetime object</span>
     <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H&quot;</span><span class="p">))</span>
@@ -745,7 +745,7 @@ Last Date  = 2002-12-17 20:00:00
 </section>
 <section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum above demonstrates a strong peak (in yellow) wihtin the first month of the year.</p>
+<p>The power spectrum above demonstrates a strong peak (in yellow) within the first month of the year.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
@@ -761,7 +761,7 @@ Last Date  = 2002-12-17 20:00:00
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf">“A Practical Guide to Wavelet Analysis” (Torrence and Compo, 1998)</a></p></li>
+<li><p><a class="reference external" href="https://www.ndbc.noaa.gov/">NOAA National Data Buoy Center</a></p></li>
 </ul>
 </section>
 </section>
@@ -1083,7 +1083,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 24 March 2025.
+  Last updated on 25 March 2025.
   <br/>
 </p>
   </div>
@@ -1137,7 +1137,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 24 March 2025.
+          Last updated on 25 March 2025.
         </p>
       </div>
     </div>
