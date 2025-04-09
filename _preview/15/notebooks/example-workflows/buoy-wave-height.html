@@ -78,7 +78,7 @@
     <link rel="prev" title="Atmospheric Data: Nino 3 SST Index" href="nino3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="8 April 2025"/>
+    <meta name="docbuild:last-update" content="9 April 2025"/>
   </head>
   
   
@@ -711,62 +711,6 @@ Last Date  = 2002-12-17 20:00:00
 <h2>Power Spectrum, Take Two<a class="headerlink" href="#power-spectrum-take-two" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.fft</span><span class="w"> </span><span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">fourier_transform</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">xfiltered</span><span class="p">))</span>
-<span class="n">freqs</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fourier_transform</span><span class="p">),</span> <span class="n">dt</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">fourier_transform</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.000002</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/8c907d5c540239421a44e0b9f31e132dce607779a76b6267c6dd4c81b30ac66a.png" src="../../_images/8c907d5c540239421a44e0b9f31e132dce607779a76b6267c6dd4c81b30ac66a.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="n">freqs</span> <span class="o">/</span> <span class="mi">3600</span>
-<span class="n">time_x</span><span class="p">,</span> <span class="n">freq_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">freq_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">time_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17181, 17181)
-(17181, 17181)
-(256, 17181)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">freq</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">freq_y</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">power</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.857800139545479e-08 -3.857800139545479e-08
-17181
-17181
-256
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">wavelet_coeffs</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -794,38 +738,6 @@ Last Date  = 2002-12-17 20:00:00
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" src="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#power = np.power((abs(wavelet_coeffs)), 2)</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">fig, ax = plt.subplots(figsize=(10, 10))</span>
-<span class="sd">ax.invert_yaxis()</span>
-<span class="sd">#ax.set_yscale(&#39;log&#39;)</span>
-
-<span class="sd">plt.contourf(time_x, freq_y, power, levels=5)</span>
-
-<span class="sd"># Y-Axis</span>
-<span class="sd">#y_values = np.arange(freq.min(), freq.max(), 0.00000001)</span>
-<span class="sd">#plt.yticks(ticks=y_values, labels=y_values)</span>
-
-<span class="sd">plt.title(&quot;Buoy Height at Station 44013&quot;)</span>
-<span class="sd">plt.xlabel(&quot;Dates&quot;)</span>
-<span class="sd">#plt.xticks(rotation=90)</span>
-<span class="sd">#plt.xticks(ticks=x_ticks, labels=x_ticklabels,rotation=90)</span>
-<span class="sd">plt.ylabel(&quot;Frequency (Hz)&quot;)</span>
-<span class="sd">plt.colorbar()</span>
-<span class="sd">plt.show()</span>
-<span class="sd">&#39;&#39;&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nfig, ax = plt.subplots(figsize=(10, 10))\nax.invert_yaxis()\n#ax.set_yscale(\&#39;log\&#39;)\n\nplt.contourf(time_x, freq_y, power, levels=5)\n\n# Y-Axis\n#y_values = np.arange(freq.min(), freq.max(), 0.00000001)\n#plt.yticks(ticks=y_values, labels=y_values)\n\nplt.title(&quot;Buoy Height at Station 44013&quot;)\nplt.xlabel(&quot;Dates&quot;)\n#plt.xticks(rotation=90)\n#plt.xticks(ticks=x_ticks, labels=x_ticklabels,rotation=90)\nplt.ylabel(&quot;Frequency (Hz)&quot;)\nplt.colorbar()\nplt.show()\n&#39;
-</pre></div>
-</div>
 </div>
 </div>
 <ul class="simple">
@@ -1173,7 +1085,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 8 April 2025.
+  Last updated on 9 April 2025.
   <br/>
 </p>
   </div>
@@ -1227,7 +1139,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 8 April 2025.
+          Last updated on 9 April 2025.
         </p>
       </div>
     </div>
