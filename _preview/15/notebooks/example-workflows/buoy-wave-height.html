@@ -495,9 +495,9 @@
 </section>
 <section id="access-buoy-data">
 <h2>Access Buoy Data<a class="headerlink" href="#access-buoy-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>First, we will need to download the relevant data we need from NOAA National Data Buoy Center. For this notebook, we will be investigating wave height buoy data from 2001 to 2002.</p>
-<p>The buoy contains more information than just wave height, so we will need to only save data relevant to the date and time and the wave height. So, the only columns we need to keep are (<code class="docutils literal notranslate"><span class="pre">YY</span></code>, <code class="docutils literal notranslate"><span class="pre">MM</span></code>, <code class="docutils literal notranslate"><span class="pre">DD</span></code>, <code class="docutils literal notranslate"><span class="pre">hh</span></code>) and wave height (<code class="docutils literal notranslate"><span class="pre">WVHT</span></code>)</p>
-<p>We will iterate through the years and save and concantate the data into a single large array.</p>
+<p>First, we will need to download the relevant data from NOAA National Data Buoy Center. For this notebook, we will be investigating wave height data from 2001 to 2002.</p>
+<p>The buoy contains more information than just wave height, so we will save only data relevant to the date and time and the wave height. So, the columns we need to keep are  date, time (<code class="docutils literal notranslate"><span class="pre">YY</span></code>, <code class="docutils literal notranslate"><span class="pre">MM</span></code>, <code class="docutils literal notranslate"><span class="pre">DD</span></code>, <code class="docutils literal notranslate"><span class="pre">hh</span></code>), and wave height (<code class="docutils literal notranslate"><span class="pre">WVHT</span></code>)</p>
+<p>We will iterate through the years to save and concantate the data into a single large array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">]</span>
@@ -537,7 +537,7 @@
 </section>
 <section id="clean-up-wave-height-data">
 <h2>Clean Up Wave Height data<a class="headerlink" href="#clean-up-wave-height-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Buoy stores null data as 99.00, so we will replace 99.00 with nan</p>
+<p>Buoys stores <code class="docutils literal notranslate"><span class="pre">null</span></code> as <code class="docutils literal notranslate"><span class="pre">99.00</span></code>, so to remove this outlier, we will need to replace 99.00 with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wave height before applying nan = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">wave_height</span><span class="p">)</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
@@ -556,7 +556,7 @@ Max wave height after applying nan  = 9.38 m
 </section>
 <section id="convert-time-to-datetimes">
 <h2>Convert Time to Datetimes<a class="headerlink" href="#convert-time-to-datetimes" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Buoy stores datetime information as separate columns of data with <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> <code class="docutils literal notranslate"><span class="pre">MM</span></code> <code class="docutils literal notranslate"><span class="pre">DD</span></code> and <code class="docutils literal notranslate"><span class="pre">HH</span></code>. For Python to recognize these strings as a date, we need to combine the strings into a single datetime value.</p>
+<p>Buoys store datetime information as separate columns of data with <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> <code class="docutils literal notranslate"><span class="pre">MM</span></code> <code class="docutils literal notranslate"><span class="pre">DD</span></code> and <code class="docutils literal notranslate"><span class="pre">HH</span></code>. For Python to recognize these strings as a date, we need to combine the strings into a single datetime value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
@@ -581,7 +581,7 @@ Last Date  = 2002-12-17 20:00:00
 </section>
 <section id="plot-and-view-data">
 <h2>Plot and View Data<a class="headerlink" href="#plot-and-view-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Let’s give the data a look!</p>
+<p>Let’s give the data a look! Wave height is recorded in meters throughout the year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -687,7 +687,8 @@ Last Date  = 2002-12-17 20:00:00
 </section>
 <section id="what-went-wrong">
 <h2>What Went Wrong?<a class="headerlink" href="#what-went-wrong" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The current wavelet has a lot of blank space. This is the result of the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values. So, to get a complete wavelet, we should filter out the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values before we apply a wavelet. We can do this by applying a mask and interpolating.</p>
+<p>The current wavelet has a lot of blank space that is confusing the wavelet analysis. This is the result of the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values, where data was no included, but is still being used in the calculation. So, to get a complete wavelet, we should filter out the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values <em>before</em> we apply a wavelet.</p>
+<p>We will fix this by applying a mask to all the nan values, and then interpolating between to fill out the remaining data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wave_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wave_height</span><span class="p">))</span>
@@ -742,6 +743,8 @@ Last Date  = 2002-12-17 20:00:00
 <img alt="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" src="../../_images/4d683426dc36fb4cde23c78433d7e7d7a5ff075dd35b9418fb61fd11c40c5fdc.png" />
 </div>
 </div>
+<p>That’s more like it!</p>
+<p>Now, the x-axis describes the <em>when</em> and the y-axis describes the <em>what</em></p>
 <ul class="simple">
 <li><p>X axis describes when wind is present and causing waves</p></li>
 <li><p>Y axis describes the range of sine and cosine waves needed to make the signal that is present. There is a large range when the waves are detected</p></li>
@@ -749,7 +752,7 @@ Last Date  = 2002-12-17 20:00:00
 </section>
 <section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The power spectrum above demonstrates a strong peak (in yellow) within the first month of the year. During this time of year, the wave activity is high and across a wide range of frequencies.</p>
+<p>The power spectrum above demonstrates a strong peak (in yellow) within the first month of the year. During this time of year, the wave activity is high and across a wide range of frequencies. This wavelet is demonstrating when wave activity is highest and the range of wave heights is widest.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
