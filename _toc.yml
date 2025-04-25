@@ -11,5 +11,5 @@ parts:
       - file: notebooks/wavelet-introduction/spy-keypad
   - caption: Geoscience Workflows
     chapters:
-      - file: notebooks/example-workflows/nino3
-      - file: notebooks/example-workflows/buoy-wave-height
+      - file: notebooks/geoscience-workflows/nino3
+      - file: notebooks/geoscience-workflows/buoy-wave-height
