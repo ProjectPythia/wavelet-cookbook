@@ -37,6 +37,7 @@ This cookbook is broken into two main sections:
 ### Geoscience Workflows
 
 - _"Atmospheric Data: Nino 3 SST Index"_: Learn how to apply wavelets to real atmospheric and oceanic data to generate a power wavelet scalogram, similar to the 1999 paper ["A Practical Guide to Wavelet Analysis"](https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf) by Torrence and Compo in Python
+- _"Buoys and Wave(let)s"_: Apply wavelets to understand how wave heights and energy change over years of data with historical records from NOAA's National Data Buoy Center
 
 ## Running the Notebooks
 
