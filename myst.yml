@@ -27,5 +27,10 @@ project:
 site:
   options:
     logo: notebooks/images/logos/pythia_logo-white-rtext.svg
+    style: _static/footer.css
     folders: true
+
+  parts:
+    footer: footer.md
+    
   template: book-theme
