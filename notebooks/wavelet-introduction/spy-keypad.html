@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -82,8 +79,7 @@
     <link rel="prev" title="PyWavelets and Jingle Bells" href="jingle-bells.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="10 January 2025"/>
+    <meta name="docbuild:last-update" content="16 June 2025"/>
   </head>
   
   
@@ -122,7 +118,7 @@
     
     
     <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
-    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark pst-js-only" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
   
   
 </a></div>
@@ -349,6 +345,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -388,14 +385,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
         </div>
@@ -587,7 +579,7 @@ Total length in time steps = 60000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/34a3f273d91e13af4bce9e5d5c8f40cf9f751b57e34111c3ccf518ad303d95a7.png" src="../../_images/34a3f273d91e13af4bce9e5d5c8f40cf9f751b57e34111c3ccf518ad303d95a7.png" />
+<img alt="../../_images/0c6085da09a3e1b109ec2c5aec30a1858bf53709c6d211374af50bcbf52c1eab.png" src="../../_images/0c6085da09a3e1b109ec2c5aec30a1858bf53709c6d211374af50bcbf52c1eab.png" />
 </div>
 </div>
 </section>
@@ -639,7 +631,7 @@ y-axis is: 39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b1695583b21d497aecc223fd69ffa0dbffca0379d2d92819a44c8aaeaa073868.png" src="../../_images/b1695583b21d497aecc223fd69ffa0dbffca0379d2d92819a44c8aaeaa073868.png" />
+<img alt="../../_images/1d6724f774eb3d222b80fe3f2bdb78a50a6e922cb3370f588acbfd145f305ae8.png" src="../../_images/1d6724f774eb3d222b80fe3f2bdb78a50a6e922cb3370f588acbfd145f305ae8.png" />
 </div>
 </div>
 </section>
@@ -686,7 +678,7 @@ y-axis is: 39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/66de97516a63bad144155418a41aeadd9148636d1e628954d52e6479d2dfc781.png" src="../../_images/66de97516a63bad144155418a41aeadd9148636d1e628954d52e6479d2dfc781.png" />
+<img alt="../../_images/9df25760368a5581f1654d00c3e081a89cbc42be4749efa86d15abfd4b0ef7a7.png" src="../../_images/9df25760368a5581f1654d00c3e081a89cbc42be4749efa86d15abfd4b0ef7a7.png" />
 </div>
 </div>
 </section>
@@ -726,7 +718,7 @@ y-axis is: 39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6afcb3a3d29809186ccedeb19856af8fc45f59549776325ce22022211e2b9385.png" src="../../_images/6afcb3a3d29809186ccedeb19856af8fc45f59549776325ce22022211e2b9385.png" />
+<img alt="../../_images/f780b1c6358b67dd4ac83e085bb66c1022c644a1ad5a18784a9d269531658d0a.png" src="../../_images/f780b1c6358b67dd4ac83e085bb66c1022c644a1ad5a18784a9d269531658d0a.png" />
 </div>
 </div>
 </section>
@@ -760,7 +752,7 @@ y-axis is: 39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ee190395986a50e1426b4ab4ea99f150c5314f055a2ee8b6bd11de6f5ebd0843.png" src="../../_images/ee190395986a50e1426b4ab4ea99f150c5314f055a2ee8b6bd11de6f5ebd0843.png" />
+<img alt="../../_images/0399da738132d9c5218a2b4e28d85b4ee3f1570de9c2bd120b4cb642dd179955.png" src="../../_images/0399da738132d9c5218a2b4e28d85b4ee3f1570de9c2bd120b4cb642dd179955.png" />
 </div>
 </div>
 </section>
@@ -1072,16 +1064,24 @@ y-axis is: 39
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1119,7 +1119,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 January 2025.
+  Last updated on 16 June 2025.
   <br/>
 </p>
   </div>
@@ -1136,8 +1136,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
      
@@ -1173,7 +1173,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 January 2025.
+          Last updated on 16 June 2025.
         </p>
       </div>
     </div>

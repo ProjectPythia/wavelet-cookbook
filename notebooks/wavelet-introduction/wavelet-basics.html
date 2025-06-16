@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -82,8 +79,7 @@
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="10 January 2025"/>
+    <meta name="docbuild:last-update" content="16 June 2025"/>
   </head>
   
   
@@ -122,7 +118,7 @@
     
     
     <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
-    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark pst-js-only" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
   
   
 </a></div>
@@ -349,6 +345,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -388,14 +385,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
         </div>
@@ -601,7 +593,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/03e20e3e4052b243a29d0e503299e4911e02bd1e8c32f71995f539eebc4898e3.png" src="../../_images/03e20e3e4052b243a29d0e503299e4911e02bd1e8c32f71995f539eebc4898e3.png" />
+<img alt="../../_images/723f19ad2f88742f51642723aa3800ec8edff876abe930a65e955fb8ac58d933.png" src="../../_images/723f19ad2f88742f51642723aa3800ec8edff876abe930a65e955fb8ac58d933.png" />
 </div>
 </div>
 </section>
@@ -645,7 +637,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a57467ef29da9c3ffd87e9a8c4f42c212070c4efdab24aeeb11d49d7062c8af.png" src="../../_images/6a57467ef29da9c3ffd87e9a8c4f42c212070c4efdab24aeeb11d49d7062c8af.png" />
+<img alt="../../_images/81c7b81bbc93788c8e7485b3a3e77e884352902560c9d97cba27e1b48b11714a.png" src="../../_images/81c7b81bbc93788c8e7485b3a3e77e884352902560c9d97cba27e1b48b11714a.png" />
 </div>
 </div>
 </section>
@@ -664,7 +656,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a457495c5b5e0d06a014315efe0101a8bd994f17988c5b10bf657febf92ebf0a.png" src="../../_images/a457495c5b5e0d06a014315efe0101a8bd994f17988c5b10bf657febf92ebf0a.png" />
+<img alt="../../_images/2fa9d85703c98ec8f9b57ec62b7146a85fe0d325f634e948ddfd30b87c5e1ba8.png" src="../../_images/2fa9d85703c98ec8f9b57ec62b7146a85fe0d325f634e948ddfd30b87c5e1ba8.png" />
 </div>
 </div>
 </section>
@@ -706,7 +698,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c92f5fb1df652f39f40e9058f35982edb5f306a0d45f2a9a71b182dfdf532e98.png" src="../../_images/c92f5fb1df652f39f40e9058f35982edb5f306a0d45f2a9a71b182dfdf532e98.png" />
+<img alt="../../_images/d382f0d186d824bf96db329e8f5f114028b9ac5c38a5d19407ca7cc1eecd104a.png" src="../../_images/d382f0d186d824bf96db329e8f5f114028b9ac5c38a5d19407ca7cc1eecd104a.png" />
 </div>
 </div>
 </section>
@@ -730,7 +722,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2cff59c68a0b68bbdcf754f073c611eb0d60215fad8b861d105ca11aa78f705a.png" src="../../_images/2cff59c68a0b68bbdcf754f073c611eb0d60215fad8b861d105ca11aa78f705a.png" />
+<img alt="../../_images/c89109ae5df33a01d3e4c19c4b08aeb8684201e2f145247797ebe83484b1c76f.png" src="../../_images/c89109ae5df33a01d3e4c19c4b08aeb8684201e2f145247797ebe83484b1c76f.png" />
 </div>
 </div>
 </section>
@@ -816,7 +808,7 @@ Duration = 15.6991 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" src="../../_images/823f85271ba2785010e33f742219d0b64110b6924cae87c496f4eab4bb5b4966.png" />
+<img alt="../../_images/97556aeb4774e87af43b60f0bcffd0cffbe7d709690c51699dbe52c5b3fbfd25.png" src="../../_images/97556aeb4774e87af43b60f0bcffd0cffbe7d709690c51699dbe52c5b3fbfd25.png" />
 </div>
 </div>
 </section>
@@ -1162,16 +1154,24 @@ Duration = 15.6991 seconds
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1209,7 +1209,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 January 2025.
+  Last updated on 16 June 2025.
   <br/>
 </p>
   </div>
@@ -1226,8 +1226,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
      
@@ -1263,7 +1263,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 January 2025.
+          Last updated on 16 June 2025.
         </p>
       </div>
     </div>
