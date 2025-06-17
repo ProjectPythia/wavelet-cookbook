@@ -1,1 +1,1 @@
-import{b as a}from"/wavelet-cookbook/build/_shared/chunk-KXDZNNUH.js";import"/wavelet-cookbook/build/_shared/chunk-J6FHCSRC.js";import"/wavelet-cookbook/build/_shared/chunk-2NH4LW52.js";export{a as unified};
+import{b as a}from"/wavelet-cookbook/_preview/18/build/_shared/chunk-KXDZNNUH.js";import"/wavelet-cookbook/_preview/18/build/_shared/chunk-J6FHCSRC.js";import"/wavelet-cookbook/_preview/18/build/_shared/chunk-2NH4LW52.js";export{a as unified};
