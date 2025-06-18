@@ -21,6 +21,7 @@ project:
     - title: Geoscience Workflows
       children:
         - file: notebooks/example-workflows/nino3.ipynb
+        - file: notebooks/example-workflows/buoy-wave-height
   jupyter:
       binder:
         repo: projectpythia/wavelet-cookbook
