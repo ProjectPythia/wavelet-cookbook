@@ -1,0 +1,26 @@
+version: 1
+extends:
+  - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
+project:
+  title: Wavelet Cookbook
+  authors:
+    - name: Project Pythia Community
+      url: https://projectpythia.org/
+  github: https://github.com/projectpythia/wavelet-cookbook
+  copyright: '2024'
+  toc:
+    - file: README.md
+    - title: Preamble
+      children:
+        - file: notebooks/how-to-cite.md
+    - title: Introduction
+      children:
+        - file: notebooks/wavelet-introduction/wavelet-basics.ipynb
+        - file: notebooks/wavelet-introduction/jingle-bells.ipynb
+        - file: notebooks/wavelet-introduction/spy-keypad.ipynb
+    - title: Geoscience Workflows
+      children:
+        - file: notebooks/example-workflows/nino3.ipynb
+  jupyter:
+      binder:
+        repo: projectpythia/wavelet-cookbook
