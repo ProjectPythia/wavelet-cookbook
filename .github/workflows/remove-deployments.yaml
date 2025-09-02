@@ -6,8 +6,6 @@ name: delete-deployment-history
 on:
   page_build: # When a push is made to a GitHub Pages-enabled branch
   workflow_dispatch:  # Manual triggering
-    branches-ignore:
-      - main
 
 jobs:
   cleanup:
@@ -18,6 +16,6 @@ jobs:
       - name: 🗑 Delete deployments
         uses: strumwolf/delete-deployment-environment@v3
         with:
-          token: ${{ secrets.GH_PAGES_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           environment: gh-pages
           onlyRemoveDeployments: true
