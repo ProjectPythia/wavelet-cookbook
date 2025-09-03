@@ -5,6 +5,9 @@ name: delete-deployment-history
 
 on:
   page_build: # When a push is made to a GitHub Pages-enabled branch
+      branches:
+        - gh-pages
+      types: [completed] # Trigger when the page build is completed
   workflow_dispatch:  # Manual triggering
 
 jobs:
