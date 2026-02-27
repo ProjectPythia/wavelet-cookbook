@@ -7,17 +7,6 @@ project:
     - name: Project Pythia Community
       url: https://projectpythia.org/
   github: https://github.com/projectpythia/wavelet-cookbook
-  error_rules:
-    - rule: link-resolves
-      severity: ignore
-      keys:
-        - 'https://doi.org/**'
-        - 'https://zenodo.org/**'
-        - 'https://www.mathworks.com/help/wavelet/gs/what-is-a-wavelet.html' # says doesn't resolve but directs just fine
-    - rule: doi-link-valid
-      severity: ignore
-      keys:
-        - 'https://zenodo.org/**'   # also suppress the DOI validation error
   copyright: '2024'
   toc:
     - file: README.md
