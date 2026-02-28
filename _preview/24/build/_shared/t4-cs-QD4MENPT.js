@@ -1,1 +1,0 @@
-import{a}from"/wavelet-cookbook/_preview/24/build/_shared/chunk-SZAK5OLM.js";import"/wavelet-cookbook/_preview/24/build/_shared/chunk-SWM73M5L.js";import"/wavelet-cookbook/_preview/24/build/_shared/chunk-37MEAX4M.js";import"/wavelet-cookbook/_preview/24/build/_shared/chunk-OZE3FFNP.js";export default a();
