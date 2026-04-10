@@ -12,7 +12,7 @@ jobs:
 
   deploy:
     needs: build
-    uses: ProjectPythia/cookbook-actions/.github/workflows/deploy-book.yaml@main
+    uses: cyschneck/cookbook-actions/.github/workflows/deploy-book.yaml@main
 
   link-check:
     if: ${{ github.repository_owner == 'ProjectPythia' }}
